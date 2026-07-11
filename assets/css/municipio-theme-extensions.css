@@ -1,0 +1,7 @@
+/*
+ * Municipio's small button size hardcodes letter-spacing with two class selectors.
+ * Matching that specificity lets the Customizer variable override it without replacing markup.
+ */
+.c-button.c-button--sm {
+  letter-spacing: var(--letter-spacing-button, 0.1rem);
+}
