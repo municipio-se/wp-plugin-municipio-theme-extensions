@@ -1,0 +1,41 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Municipio Theme Extensions 0.1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: source/Customizer/HeaderSettings.php
+msgid "Header link color"
+msgstr ""
+
+#: source/Customizer/HeaderSettings.php
+msgid "Sets the color of links and icons shown directly in the header."
+msgstr ""
+
+#: source/Customizer/HeaderSettings.php
+msgid "Header link typography"
+msgstr ""
+
+#: source/Customizer/HeaderSettings.php
+msgid "Sets the size and weight of links shown directly in the header."
+msgstr ""
+
+#: source/Customizer/MenuSettings.php
+msgid "Start secondary menu at level two"
+msgstr ""
+
+#: source/Customizer/MenuSettings.php
+msgid "Hides level one from the secondary page navigation."
+msgstr ""
+
+#: source/Customizer/MenuSettings.php
+msgid "Enabled"
+msgstr ""
+
+#: source/Customizer/MenuSettings.php
+msgid "Disabled"
+msgstr ""
+
+#: source/Customizer/TypographySettings.php
+msgid "Letter Spacing"
+msgstr ""

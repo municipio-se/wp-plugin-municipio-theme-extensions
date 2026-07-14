@@ -1,7 +1,7 @@
 # Municipio Theme Extensions
 
-Municipio Theme Extensions adds focused visual design options that are missing
-from modern Municipio. It does not add editorial workflows or business
+Municipio Theme Extensions adds focused theme compatibility options that are
+missing from modern Municipio. It does not add editorial workflows or business
 functionality.
 
 The plugin supports modern Municipio only. Municipio LTS is a migration source,
@@ -22,8 +22,8 @@ Extensions** in WordPress after installation.
 
 ## Header settings
 
-The first release adds two fields to Municipios existing **Header →
-Appearance** section:
+The first release adds two fields to Municipios existing **Header → Appearance**
+section:
 
 - header link color;
 - header link size and weight.
@@ -41,10 +41,23 @@ replacing its Blade markup. The default preserves Municipios current `.1rem`;
 migrated LTS button typography uses `normal` because the former Municipio
 Extended button template did not apply that spacing.
 
+## Secondary menu behavior
+
+The plugin adds **Start secondary menu at level two** to Municipios existing
+**Menu → Behaviour** section. The setting is enabled by default and removes the
+active level-one branch from the secondary sidebar navigation even when the
+primary menu has no assigned items. Disabling it restores modern Municipios
+current behavior for that configuration and displays the complete tree.
+
+The option uses Municipios controller applicator and its cache. The runtime
+default matches the field default, so existing installations receive the enabled
+behavior without an activation migration or an initial Customizer save. Primary,
+mobile, drawer, mega-menu, and breadcrumb data are not modified.
+
 ## Activation migration
 
-Activation runs a versioned, idempotent migration for the settings needed by
-the first release:
+Activation runs a versioned, idempotent migration for the settings needed by the
+first release:
 
 - compatible color values are reused directly;
 - legacy `header_color` tokens are mapped to explicit colors;

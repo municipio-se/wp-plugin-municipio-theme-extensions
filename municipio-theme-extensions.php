@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 /**
  * Plugin Name:       Municipio Theme Extensions
- * Description:       Adds focused visual design options to modern Municipio installations.
+ * Description:       Adds focused theme compatibility options to modern Municipio installations.
  * Version:           0.1.0
  * Author:            Whitespace
  * Requires PHP:      8.2

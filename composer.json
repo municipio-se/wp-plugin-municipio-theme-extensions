@@ -1,38 +1,38 @@
 {
-    "name": "municipio/wp-plugin-municipio-theme-extensions",
-    "description": "Visual theme extensions for modern Municipio installations.",
-    "type": "wordpress-plugin",
-    "license": "MIT",
-    "require": {
-        "php": "^8.2",
-        "composer/installers": "^2.3"
-    },
-    "require-dev": {
-        "carthage-software/mago": "^1.0.0-rc.3",
-        "phpunit/phpunit": "^11.5"
-    },
-    "autoload": {
-        "psr-4": {
-            "MunicipioThemeExtensions\\": "source/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "MunicipioThemeExtensions\\Tests\\": "tests/"
-        }
-    },
-    "extra": {
-        "installer-name": "municipio-theme-extensions"
-    },
-    "config": {
-        "allow-plugins": {
-            "carthage-software/mago": true,
-            "composer/installers": true
-        }
-    },
-    "scripts": {
-        "test": "php -d memory_limit=512M vendor/bin/phpunit --no-coverage",
-        "lint": "vendor/bin/mago lint",
-        "format": "vendor/bin/mago fmt"
+  "name": "municipio/wp-plugin-municipio-theme-extensions",
+  "description": "Focused theme compatibility extensions for modern Municipio installations.",
+  "type": "wordpress-plugin",
+  "license": "MIT",
+  "require": {
+    "php": "^8.2",
+    "composer/installers": "^2.3"
+  },
+  "require-dev": {
+    "carthage-software/mago": "^1.0.0-rc.3",
+    "phpunit/phpunit": "^11.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "MunicipioThemeExtensions\\": "source/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "MunicipioThemeExtensions\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "installer-name": "municipio-theme-extensions"
+  },
+  "config": {
+    "allow-plugins": {
+      "carthage-software/mago": true,
+      "composer/installers": true
+    }
+  },
+  "scripts": {
+    "test": "php -d memory_limit=512M vendor/bin/phpunit --no-coverage",
+    "lint": "vendor/bin/mago lint",
+    "format": "vendor/bin/mago fmt"
+  }
 }

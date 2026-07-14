@@ -1,0 +1,47 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Municipio Theme Extensions 0.1.0\n"
+"PO-Revision-Date: 2026-07-14 00:00+0200\n"
+"Last-Translator: Whitespace\n"
+"Language-Team: Swedish\n"
+"Language: sv_SE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: source/Customizer/HeaderSettings.php
+msgid "Header link color"
+msgstr "Länkfärg i sidhuvudet"
+
+#: source/Customizer/HeaderSettings.php
+msgid "Sets the color of links and icons shown directly in the header."
+msgstr "Anger färgen för länkar och ikoner som visas direkt i sidhuvudet."
+
+#: source/Customizer/HeaderSettings.php
+msgid "Header link typography"
+msgstr "Typografi för länkar i sidhuvudet"
+
+#: source/Customizer/HeaderSettings.php
+msgid "Sets the size and weight of links shown directly in the header."
+msgstr "Anger storlek och vikt för länkar som visas direkt i sidhuvudet."
+
+#: source/Customizer/MenuSettings.php
+msgid "Start secondary menu at level two"
+msgstr "Låt sekundärmenyn börja på nivå två"
+
+#: source/Customizer/MenuSettings.php
+msgid "Hides level one from the secondary page navigation."
+msgstr "Döljer nivå ett i den sekundära sidnavigationen."
+
+#: source/Customizer/MenuSettings.php
+msgid "Enabled"
+msgstr "Aktiverat"
+
+#: source/Customizer/MenuSettings.php
+msgid "Disabled"
+msgstr "Inaktiverat"
+
+#: source/Customizer/TypographySettings.php
+msgid "Letter Spacing"
+msgstr "Teckenavstånd"
