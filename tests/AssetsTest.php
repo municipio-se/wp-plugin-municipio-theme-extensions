@@ -56,4 +56,21 @@ final class AssetsTest extends TestCase
         static::assertSame('test-version', $script['ver']);
         static::assertTrue($script['args']);
     }
+
+    public function testItEnqueuesTheModalAccessibilityScriptInTheFooter(): void
+    {
+        (new Assets('/plugin.php', 'test-version'))->enqueue();
+
+        static::assertArrayHasKey(
+            'municipio-theme-extensions-modal-accessibility',
+            WordPressState::$enqueuedScripts,
+        );
+
+        $script = WordPressState::$enqueuedScripts['municipio-theme-extensions-modal-accessibility'];
+
+        static::assertStringEndsWith('assets/js/modal-accessibility.js', $script['src']);
+        static::assertSame([], $script['deps']);
+        static::assertSame('test-version', $script['ver']);
+        static::assertTrue($script['args']);
+    }
 }

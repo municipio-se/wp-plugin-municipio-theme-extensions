@@ -10,6 +10,7 @@ final class Assets
 {
     private const STYLE_HANDLE = 'municipio-theme-extensions';
     private const SLIDER_A11Y_SCRIPT_HANDLE = 'municipio-theme-extensions-slider-accessibility';
+    private const MODAL_A11Y_SCRIPT_HANDLE = 'municipio-theme-extensions-modal-accessibility';
 
     public function __construct(
         private readonly string $pluginFile,
@@ -39,6 +40,17 @@ final class Assets
         wp_enqueue_script(
             self::SLIDER_A11Y_SCRIPT_HANDLE,
             plugins_url('assets/js/slider-accessibility.js', $this->pluginFile),
+            [],
+            $this->version,
+            true,
+        );
+
+        // Restores a sane focus order for the modal component, which modern
+        // Municipio renders with positive `tabindex` values. See
+        // assets/js/modal-accessibility.js for the rationale.
+        wp_enqueue_script(
+            self::MODAL_A11Y_SCRIPT_HANDLE,
+            plugins_url('assets/js/modal-accessibility.js', $this->pluginFile),
             [],
             $this->version,
             true,
