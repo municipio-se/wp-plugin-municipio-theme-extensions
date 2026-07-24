@@ -9,6 +9,7 @@ use MunicipioThemeExtensions\Customizer\TypographySettings;
 final class Assets
 {
     private const STYLE_HANDLE = 'municipio-theme-extensions';
+    private const SLIDER_A11Y_SCRIPT_HANDLE = 'municipio-theme-extensions-slider-accessibility';
 
     public function __construct(
         private readonly string $pluginFile,
@@ -31,6 +32,17 @@ final class Assets
         );
 
         wp_add_inline_style(self::STYLE_HANDLE, $this->buttonLetterSpacingCss());
+
+        // Restores accessible semantics for the slider pagination, which modern
+        // Municipio renders as a `role="tablist"` with no `tab` children. See
+        // assets/js/slider-accessibility.js for the rationale.
+        wp_enqueue_script(
+            self::SLIDER_A11Y_SCRIPT_HANDLE,
+            plugins_url('assets/js/slider-accessibility.js', $this->pluginFile),
+            [],
+            $this->version,
+            true,
+        );
     }
 
     public function buttonLetterSpacingCss(): string

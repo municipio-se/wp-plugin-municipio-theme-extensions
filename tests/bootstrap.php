@@ -51,3 +51,31 @@ if (!function_exists('set_theme_mod')) {
         WordPressState::$themeMods[$name] = $value;
     }
 }
+
+if (!function_exists('plugins_url')) {
+    function plugins_url(string $path = '', string $plugin = ''): string
+    {
+        return 'https://example.test/wp-content/plugins/municipio-theme-extensions/' . ltrim($path, '/');
+    }
+}
+
+if (!function_exists('wp_enqueue_style')) {
+    function wp_enqueue_style(string $handle, string $src = '', array $deps = [], mixed $ver = false, string $media = 'all'): void
+    {
+        WordPressState::$enqueuedStyles[$handle] = compact('src', 'deps', 'ver', 'media');
+    }
+}
+
+if (!function_exists('wp_add_inline_style')) {
+    function wp_add_inline_style(string $handle, string $data): bool
+    {
+        return true;
+    }
+}
+
+if (!function_exists('wp_enqueue_script')) {
+    function wp_enqueue_script(string $handle, string $src = '', array $deps = [], mixed $ver = false, mixed $args = false): void
+    {
+        WordPressState::$enqueuedScripts[$handle] = compact('src', 'deps', 'ver', 'args');
+    }
+}

@@ -39,4 +39,21 @@ final class AssetsTest extends TestCase
             (new Assets('/plugin.php', 'test'))->buttonLetterSpacingCss(),
         );
     }
+
+    public function testItEnqueuesTheSliderAccessibilityScriptInTheFooter(): void
+    {
+        (new Assets('/plugin.php', 'test-version'))->enqueue();
+
+        static::assertArrayHasKey(
+            'municipio-theme-extensions-slider-accessibility',
+            WordPressState::$enqueuedScripts,
+        );
+
+        $script = WordPressState::$enqueuedScripts['municipio-theme-extensions-slider-accessibility'];
+
+        static::assertStringEndsWith('assets/js/slider-accessibility.js', $script['src']);
+        static::assertSame([], $script['deps']);
+        static::assertSame('test-version', $script['ver']);
+        static::assertTrue($script['args']);
+    }
 }
