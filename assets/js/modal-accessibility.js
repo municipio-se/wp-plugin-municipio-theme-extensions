@@ -9,9 +9,10 @@
  * sequence — a focus-order violation (WCAG 2.4.3) reported by Lighthouse.
  *
  * The `<dialog>` element already manages focus and nothing relies on these
- * values, so restore a sane tab order: keep the (scrollable) content focusable
- * with `tabindex="0"`, and drop the heading from the tab order entirely. No
- * visual or behavioural change.
+ * values, so restore a sane tab order: take the non-interactive content wrapper
+ * out of the tab order (`tabindex="-1"`) and drop the heading from it entirely,
+ * leaving the keyboard focus flow to the modal's real controls. No visual or
+ * behavioural change.
  *
  * This is a site-level mitigation. The underlying markup lives upstream in
  * helsingborg-stad/component-library; an upstream fix is tracked separately.
@@ -26,7 +27,9 @@
     function fix() {
         document.querySelectorAll('.c-modal__content').forEach(function (el) {
             if (isPositiveTabindex(el)) {
-                el.setAttribute('tabindex', '0');
+                // The content wrapper is not interactive, so take it out of the
+                // tab order entirely rather than leaving it as a tab stop.
+                el.setAttribute('tabindex', '-1');
             }
         });
 
