@@ -31,3 +31,20 @@
   --icon-color: var(--color-base, var(--color-black, #000000));
   color: var(--color-base, var(--color-black, #000000));
 }
+
+/*
+ * Municipio Extended (LTS) added an intentional 4rem gap above the footer,
+ * with a matching compensation on the bottom sidebar so the gap stays 4rem
+ * whether or not that sidebar renders (source: municipio-se/wp-plugin-
+ * municipio-extended@a0db6da). Modern Municipio has neither rule. Reproduced
+ * here with the styleguide's global spacing token (--base: 0.5rem) instead of
+ * the LTS pixel value: calc(var(--base) * 8) = 4rem.
+ */
+.site-footer {
+  margin-top: calc(var(--base) * 8);
+}
+
+.sidebar-bottom-sidebar {
+  margin-top: calc(var(--base) * 8);
+  margin-bottom: calc(var(--base) * -8);
+}
