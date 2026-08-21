@@ -54,6 +54,15 @@ default matches the field default, so existing installations receive the enabled
 behavior without an activation migration or an initial Customizer save. Primary,
 mobile, drawer, mega-menu, and breadcrumb data are not modified.
 
+## One Page classic content
+
+The plugin restores the LTS-compatible **Display text content for One Page
+template** option in Municipios existing **General settings** section. It reuses
+the `municipio_customizer_onepage_body_text` theme mod, promotes the current One
+Page title when enabled, and lets Municipios own template render filtered
+classic content through the same content branch used for blocks. No page
+template or content is copied or migrated.
+
 ## Activation migration
 
 Activation runs a versioned, idempotent migration for the settings needed by the

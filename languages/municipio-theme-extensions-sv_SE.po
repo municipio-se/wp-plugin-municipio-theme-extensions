@@ -42,6 +42,10 @@ msgstr "Aktiverat"
 msgid "Disabled"
 msgstr "Inaktiverat"
 
+#: source/Customizer/OnePageSettings.php
+msgid "Display text content for One Page template"
+msgstr "Visa textinnehåll för One Page-mall"
+
 #: source/Customizer/TypographySettings.php
 msgid "Letter Spacing"
 msgstr "Teckenavstånd"
