@@ -36,6 +36,10 @@ msgstr ""
 msgid "Disabled"
 msgstr ""
 
+#: source/Customizer/OnePageSettings.php
+msgid "Display text content for One Page template"
+msgstr ""
+
 #: source/Customizer/TypographySettings.php
 msgid "Letter Spacing"
 msgstr ""

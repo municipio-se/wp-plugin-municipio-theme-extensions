@@ -44,10 +44,7 @@ final class AssetsTest extends TestCase
     {
         (new Assets('/plugin.php', 'test-version'))->enqueue();
 
-        static::assertArrayHasKey(
-            'municipio-theme-extensions-slider-accessibility',
-            WordPressState::$enqueuedScripts,
-        );
+        static::assertArrayHasKey('municipio-theme-extensions-slider-accessibility', WordPressState::$enqueuedScripts);
 
         $script = WordPressState::$enqueuedScripts['municipio-theme-extensions-slider-accessibility'];
 
@@ -61,10 +58,7 @@ final class AssetsTest extends TestCase
     {
         (new Assets('/plugin.php', 'test-version'))->enqueue();
 
-        static::assertArrayHasKey(
-            'municipio-theme-extensions-modal-accessibility',
-            WordPressState::$enqueuedScripts,
-        );
+        static::assertArrayHasKey('municipio-theme-extensions-modal-accessibility', WordPressState::$enqueuedScripts);
 
         $script = WordPressState::$enqueuedScripts['municipio-theme-extensions-modal-accessibility'];
 
