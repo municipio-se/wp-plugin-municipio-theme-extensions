@@ -46,6 +46,17 @@ final class ClassicContentTest extends TestCase
         static::assertTrue($extension->filterShowTitle(false, 42));
     }
 
+    public function testEnabledSettingKeepsTheFrontPageTitleChoiceAuthoritative(): void
+    {
+        WordPressState::$themeMods[OnePageSettings::DISPLAY_CLASSIC_CONTENT_SETTING] = '1';
+        WordPressState::$options['page_on_front'] = 4;
+        $extension = new ClassicContent();
+
+        static::assertFalse($extension->filterShowTitle(false, 4));
+        static::assertTrue($extension->filterShowTitle(true, 4));
+        static::assertTrue($extension->filterShowTitle(false, 42));
+    }
+
     public function testCustomizerControllerValueSupportsPreviewWithoutSaving(): void
     {
         $extension = new ClassicContent();

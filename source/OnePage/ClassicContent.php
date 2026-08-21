@@ -35,11 +35,16 @@ final class ClassicContent
     }
 
     /**
-     * The global compatibility option only promotes the title to visible. When disabled, the
-     * current Municipio page-level choice remains authoritative.
+     * The global compatibility option only promotes the title to visible. The static front page
+     * keeps Municipios page-level choice so an imported global value does not expose its internal
+     * WordPress title above the front-page modules.
      */
     public function filterShowTitle(mixed $showTitle, int $postId = 0): bool
     {
+        if ($postId > 0 && $postId === (int) get_option('page_on_front', 0)) {
+            return (bool) $showTitle;
+        }
+
         return (bool) $showTitle || $this->isEnabled();
     }
 
