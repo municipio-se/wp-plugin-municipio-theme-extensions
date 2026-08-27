@@ -49,3 +49,7 @@ msgstr "Visa textinnehåll för One Page-mall"
 #: source/Customizer/TypographySettings.php
 msgid "Letter Spacing"
 msgstr "Teckenavstånd"
+
+#: source/Customizer/DrawerSettings.php
+msgid "Light"
+msgstr "Ljus"

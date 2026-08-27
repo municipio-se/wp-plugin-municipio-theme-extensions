@@ -54,6 +54,19 @@ default matches the field default, so existing installations receive the enabled
 behavior without an activation migration or an initial Customizer save. Primary,
 mobile, drawer, mega-menu, and breadcrumb data are not modified.
 
+## Drawer palette
+
+The plugin extends Municipios existing drawer controls with a **Light** choice
+for both the main area and the optional secondary area. The choices retain
+Municipios setting names, modifier output, markup, focus handling, and
+responsive behavior. Their presentation uses the site's
+`--color-background` token with dark text, links, and icons.
+
+Neither choice is a new default. New Municipio sites therefore retain
+Municipios standard drawer palette until an editor selects another value. LTS
+migrations can explicitly select both light values through their migration
+tooling without making plugin activation mutate site data.
+
 ## One Page classic content
 
 The plugin restores the LTS-compatible **Display text content for One Page

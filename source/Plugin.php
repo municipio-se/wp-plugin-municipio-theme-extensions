@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MunicipioThemeExtensions;
 
+use MunicipioThemeExtensions\Customizer\DrawerSettings;
 use MunicipioThemeExtensions\Customizer\HeaderSettings;
 use MunicipioThemeExtensions\Customizer\MenuSettings;
 use MunicipioThemeExtensions\Customizer\OnePageSettings;
@@ -21,6 +22,7 @@ final class Plugin
     public function register(): void
     {
         $headerSettings = new HeaderSettings();
+        $drawerSettings = new DrawerSettings();
         $menuSettings = new MenuSettings();
         $onePageSettings = new OnePageSettings();
         $typographySettings = new TypographySettings();
@@ -28,6 +30,7 @@ final class Plugin
         $onePageClassicContent = new ClassicContent();
 
         add_action('municipio_customizer_section_registered', [$headerSettings, 'register'], 10, 1);
+        add_action('municipio_customizer_section_registered', [$drawerSettings, 'register'], 10, 1);
         add_action('municipio_customizer_section_registered', [$menuSettings, 'register'], 10, 1);
         add_action('municipio_customizer_section_registered', [$onePageSettings, 'register'], 10, 1);
         add_action('municipio_customizer_section_registered', [$typographySettings, 'register'], 10, 1);

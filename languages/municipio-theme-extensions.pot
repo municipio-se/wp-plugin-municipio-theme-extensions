@@ -43,3 +43,7 @@ msgstr ""
 #: source/Customizer/TypographySettings.php
 msgid "Letter Spacing"
 msgstr ""
+
+#: source/Customizer/DrawerSettings.php
+msgid "Light"
+msgstr ""

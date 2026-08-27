@@ -5,3 +5,29 @@
 .c-button.c-button--sm {
   letter-spacing: var(--letter-spacing-button, 0.1rem);
 }
+
+/*
+ * Municipio owns the drawer layout and applies the saved Customizer values as
+ * modifiers. These two extension modifiers only add the missing light palette.
+ */
+.c-drawer.c-drawer--light,
+.c-drawer.c-drawer--light .site-nav-mobile__primary > .c-nav__item,
+.c-drawer.c-drawer--light .c-drawer__header {
+  --drawer-background: var(--color-background, var(--color-white, #ffffff));
+}
+
+.c-drawer.c-drawer--duotone.c-drawer--duotone-light,
+.c-drawer.c-drawer--duotone.c-drawer--duotone-light .site-nav-mobile__secondary > .c-nav__item {
+  --drawer-duotone-background: var(--color-background, var(--color-white, #ffffff));
+}
+
+.c-drawer.c-drawer--light,
+.c-drawer.c-drawer--duotone.c-drawer--duotone-light .site-nav-mobile__secondary {
+  --color-link: var(--color-base, var(--color-black, #000000));
+  --color-link-hover: var(--color-base, var(--color-black, #000000));
+  --color-link-active: var(--color-base, var(--color-black, #000000));
+  --color-link-visited: var(--color-base, var(--color-black, #000000));
+  --color-link-visited-hover: var(--color-base, var(--color-black, #000000));
+  --icon-color: var(--color-base, var(--color-black, #000000));
+  color: var(--color-base, var(--color-black, #000000));
+}
