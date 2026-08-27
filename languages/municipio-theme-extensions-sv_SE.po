@@ -53,3 +53,15 @@ msgstr "Teckenavstånd"
 #: source/Customizer/DrawerSettings.php
 msgid "Light"
 msgstr "Ljus"
+
+#: source/Customizer/SecondaryNavigationPosition.php
+msgid "Below title"
+msgstr "Under rubriken"
+
+#: source/Navigation/PageHideSecondaryMenu.php
+msgid "Hide secondary menu"
+msgstr "Dölj sekundärmeny"
+
+#: source/Navigation/BelowTitleNavigation.php
+msgid "Subpages"
+msgstr "Undersidor"

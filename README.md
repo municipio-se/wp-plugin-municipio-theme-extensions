@@ -67,6 +67,21 @@ Municipios standard drawer palette until an editor selects another value. LTS
 migrations can explicitly select both light values through their migration
 tooling without making plugin activation mutate site data.
 
+## Below-title secondary navigation
+
+The plugin also adds **Below title** to Municipios existing secondary
+navigation position field for supported Municipio versions from 6.43.3 up to,
+but not including, 8.0.0. On singular hierarchical posts, this mode renders
+published direct children in menu order after the article heading and before
+the regular content. Hidden menu items are excluded, and links use Municipios
+current secondary Button color.
+
+The existing `secondary_navigation_position=below_title` theme mod and
+`page_hide_secondary_menu` post metadata are reused without writing or
+backfilling data. The page field is registered with its legacy key and name only
+when Municipio or another plugin does not already own an equivalent field.
+Pages without eligible children produce no navigation wrapper.
+
 ## One Page classic content
 
 The plugin restores the LTS-compatible **Display text content for One Page

@@ -18,11 +18,25 @@ final class WordPressState
     /** @var array<string, array<string, mixed>> */
     public static array $enqueuedStyles = [];
 
+    /** @var array<string, mixed> */
+    public static array $runtime = [];
+
     public static function reset(): void
     {
         self::$themeMods = [];
         self::$options = [];
         self::$enqueuedScripts = [];
         self::$enqueuedStyles = [];
+        self::$runtime = [
+            'singular' => false,
+            'queriedObject' => null,
+            'postTypes' => [],
+            'posts' => [],
+            'lastGetPostsArguments' => [],
+            'titles' => [],
+            'permalinks' => [],
+            'fields' => [],
+            'acfFields' => [],
+        ];
     }
 }

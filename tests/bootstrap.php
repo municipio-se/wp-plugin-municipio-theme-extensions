@@ -52,6 +52,89 @@ if (!function_exists('set_theme_mod')) {
     }
 }
 
+if (!function_exists('is_singular')) {
+    function is_singular(): bool
+    {
+        return WordPressState::$runtime['singular'];
+    }
+}
+
+if (!function_exists('get_queried_object')) {
+    function get_queried_object(): ?object
+    {
+        return WordPressState::$runtime['queriedObject'];
+    }
+}
+
+if (!function_exists('get_queried_object_id')) {
+    function get_queried_object_id(): int
+    {
+        return (int) (WordPressState::$runtime['queriedObject']->ID ?? 0);
+    }
+}
+
+if (!function_exists('get_post_type_object')) {
+    function get_post_type_object(string $postType): ?object
+    {
+        return WordPressState::$runtime['postTypes'][$postType] ?? null;
+    }
+}
+
+if (!function_exists('get_posts')) {
+    function get_posts(array $arguments = []): array
+    {
+        WordPressState::$runtime['lastGetPostsArguments'] = $arguments;
+        return WordPressState::$runtime['posts'];
+    }
+}
+
+if (!function_exists('get_the_title')) {
+    function get_the_title(int $postId = 0): string
+    {
+        return WordPressState::$runtime['titles'][$postId] ?? '';
+    }
+}
+
+if (!function_exists('get_permalink')) {
+    function get_permalink(int $postId = 0): string
+    {
+        return WordPressState::$runtime['permalinks'][$postId] ?? '';
+    }
+}
+
+if (!function_exists('get_field')) {
+    function get_field(string $field, int $postId = 0): mixed
+    {
+        return WordPressState::$runtime['fields'][$postId][$field] ?? false;
+    }
+}
+
+if (!function_exists('acf_get_field')) {
+    function acf_get_field(string $selector): mixed
+    {
+        return WordPressState::$runtime['acfFields'][$selector] ?? false;
+    }
+}
+
+if (!function_exists('acf_add_local_field')) {
+    function acf_add_local_field(array $field): bool
+    {
+        WordPressState::$runtime['acfFields'][$field['key']] = $field;
+        WordPressState::$runtime['acfFields'][$field['name']] = $field;
+        return true;
+    }
+}
+
+if (!function_exists('acf_get_fields')) {
+    function acf_get_fields(string $parent): array
+    {
+        return array_values(array_filter(
+            WordPressState::$runtime['acfFields'],
+            static fn(array $field): bool => ($field['parent'] ?? null) === $parent,
+        ));
+    }
+}
+
 if (!function_exists('plugins_url')) {
     function plugins_url(string $path = '', string $plugin = ''): string
     {

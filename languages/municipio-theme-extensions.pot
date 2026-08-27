@@ -47,3 +47,15 @@ msgstr ""
 #: source/Customizer/DrawerSettings.php
 msgid "Light"
 msgstr ""
+
+#: source/Customizer/SecondaryNavigationPosition.php
+msgid "Below title"
+msgstr ""
+
+#: source/Navigation/PageHideSecondaryMenu.php
+msgid "Hide secondary menu"
+msgstr ""
+
+#: source/Navigation/BelowTitleNavigation.php
+msgid "Subpages"
+msgstr ""
