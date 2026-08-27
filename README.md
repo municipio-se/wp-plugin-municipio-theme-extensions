@@ -33,6 +33,12 @@ buttons, drawer navigation, other menus, and Municipio markup remain owned by
 Municipio. The configured color also applies to hover, focus, active, and
 visited states so generic link colors cannot reduce header contrast.
 
+For the standard header, the plugin also restores the saved
+`header_breakpoint`, `tab_menu_button_size`, and
+`hero_search_placeholder` settings in Municipios existing Header layout, Tab
+menu, and Search sections. Unsaved installations keep Municipios current
+`lg`, `sm`, and generated-placeholder defaults.
+
 The release also adds **Letter Spacing** as a subfield in Municipios existing
 **Typography → Button** control. The value is stored with the other
 `typography_button` choices and writes `--letter-spacing-button`, which a plugin
@@ -104,10 +110,15 @@ first release:
   setting;
 - reusable LTS button typography receives normal letter spacing without
   overwriting an explicitly configured value.
+- legacy desktop search placements are complemented with their current mobile
+  equivalents when legacy-only header settings prove that the selection came
+  from LTS.
 
 Existing target values are never overwritten. Legacy theme mods remain in the
 database for troubleshooting and rollback, and the completed migration version
-is stored in `municipio_theme_extensions_migration_version`.
+is stored in `municipio_theme_extensions_migration_version`. The version
+check also runs after theme setup so an active Composer-installed plugin applies
+new migrations without a deactivate-and-reactivate cycle.
 
 ## Development
 

@@ -36,4 +36,5 @@ if (class_exists(Plugin::class)) {
 
 if (class_exists(ActivationMigration::class)) {
     register_activation_hook(__FILE__, [ActivationMigration::class, 'run']);
+    add_action('after_setup_theme', [ActivationMigration::class, 'run']);
 }

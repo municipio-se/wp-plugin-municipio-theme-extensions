@@ -65,3 +65,39 @@ msgstr "Dölj sekundärmeny"
 #: source/Navigation/BelowTitleNavigation.php
 msgid "Subpages"
 msgstr "Undersidor"
+
+#: source/Customizer/ResponsiveHeaderSettings.php
+msgid "Header breakpoint"
+msgstr "Brytpunkt för sidhuvud"
+
+#: source/Customizer/ResponsiveHeaderSettings.php
+msgid "Selects the first screen size that uses the standard desktop header."
+msgstr "Väljer den första skärmstorleken som använder standardsidhuvudet för desktop."
+
+#: source/Customizer/ResponsiveHeaderSettings.php
+msgid "Extra small"
+msgstr "Extra liten"
+
+#: source/Customizer/ResponsiveHeaderSettings.php
+msgid "Small"
+msgstr "Liten"
+
+#: source/Customizer/ResponsiveHeaderSettings.php
+msgid "Medium"
+msgstr "Mellan"
+
+#: source/Customizer/ResponsiveHeaderSettings.php
+msgid "Large"
+msgstr "Stor"
+
+#: source/Customizer/ResponsiveHeaderSettings.php
+msgid "Extra large"
+msgstr "Extra stor"
+
+#: source/Customizer/ResponsiveHeaderSettings.php
+msgid "Tab menu button size"
+msgstr "Knappstorlek för flikmeny"
+
+#: source/Customizer/ResponsiveHeaderSettings.php
+msgid "Hero search placeholder"
+msgstr "Platshållartext i herosökning"

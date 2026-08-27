@@ -11,16 +11,16 @@ final class ActivationMigration
     public const VERSION_OPTION = 'municipio_theme_extensions_migration_version';
 
     /**
-     * The schema version for the first unreleased package release. Development iterations are
-     * squashed into this version until the release is tagged.
+     * The schema version for the next package release. Development iterations are squashed into
+     * this version until the release is tagged.
      *
      * @see docs/migrations.md
      */
-    public const VERSION = '1';
+    public const VERSION = '2';
 
     /**
-     * Migrates only values needed by the first header delivery. Existing target values and all
-     * legacy values are deliberately preserved so activation remains repeatable and reversible.
+     * Migrates only values owned by this plugin. Existing target values and all legacy values are
+     * deliberately preserved so activation remains repeatable and reversible.
      */
     public static function run(): void
     {
@@ -35,6 +35,7 @@ final class ActivationMigration
         self::migrateColor($themeMods);
         self::migrateTypography($themeMods);
         ButtonTypographyMigration::run($themeMods);
+        SearchDisplayMigration::run($themeMods);
 
         update_option(self::VERSION_OPTION, self::VERSION);
     }

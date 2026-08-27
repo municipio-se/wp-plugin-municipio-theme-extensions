@@ -110,7 +110,7 @@ final class ActivationMigrationTest extends TestCase
 
     public function testItDoesNotRerunTheRecordedMigration(): void
     {
-        WordPressState::$options[ActivationMigration::VERSION_OPTION] = '1';
+        WordPressState::$options[ActivationMigration::VERSION_OPTION] = '2';
         WordPressState::$themeMods = [
             TypographySettings::BUTTON_TYPOGRAPHY_SETTING => [
                 'font-size' => '16px',
@@ -125,6 +125,20 @@ final class ActivationMigrationTest extends TestCase
             WordPressState::$themeMods[TypographySettings::BUTTON_TYPOGRAPHY_SETTING],
         );
         static::assertSame(ActivationMigration::VERSION, WordPressState::$options[ActivationMigration::VERSION_OPTION]);
+    }
+
+    public function testItRunsTheSecondMigrationForAnInstallationAtVersionOne(): void
+    {
+        WordPressState::$options[ActivationMigration::VERSION_OPTION] = '1';
+        WordPressState::$themeMods = [
+            'hero_search_placeholder' => 'Find services',
+            'search_display' => ['header_sub'],
+        ];
+
+        ActivationMigration::run();
+
+        static::assertSame(['header_sub', 'header_mobile_sub'], WordPressState::$themeMods['search_display']);
+        static::assertSame('2', WordPressState::$options[ActivationMigration::VERSION_OPTION]);
     }
 
     public function testItDoesNotTreatModernButtonTypographyAsLegacy(): void

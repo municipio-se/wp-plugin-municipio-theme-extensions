@@ -59,3 +59,39 @@ msgstr ""
 #: source/Navigation/BelowTitleNavigation.php
 msgid "Subpages"
 msgstr ""
+
+#: source/Customizer/ResponsiveHeaderSettings.php
+msgid "Header breakpoint"
+msgstr ""
+
+#: source/Customizer/ResponsiveHeaderSettings.php
+msgid "Selects the first screen size that uses the standard desktop header."
+msgstr ""
+
+#: source/Customizer/ResponsiveHeaderSettings.php
+msgid "Extra small"
+msgstr ""
+
+#: source/Customizer/ResponsiveHeaderSettings.php
+msgid "Small"
+msgstr ""
+
+#: source/Customizer/ResponsiveHeaderSettings.php
+msgid "Medium"
+msgstr ""
+
+#: source/Customizer/ResponsiveHeaderSettings.php
+msgid "Large"
+msgstr ""
+
+#: source/Customizer/ResponsiveHeaderSettings.php
+msgid "Extra large"
+msgstr ""
+
+#: source/Customizer/ResponsiveHeaderSettings.php
+msgid "Tab menu button size"
+msgstr ""
+
+#: source/Customizer/ResponsiveHeaderSettings.php
+msgid "Hero search placeholder"
+msgstr ""
