@@ -37,14 +37,19 @@
  * with a matching compensation on the bottom sidebar so the gap stays 4rem
  * whether or not that sidebar renders (source: municipio-se/wp-plugin-
  * municipio-extended@a0db6da). Modern Municipio has neither rule. Reproduced
- * here with the styleguide's global spacing token (--base: 0.5rem) instead of
- * the LTS pixel value: calc(var(--base) * 8) = 4rem.
+ * here with the styleguide's global spacing token (--base). The compiled
+ * theme bundle never actually declares --base as a custom property (verified
+ * live: 5253 var(--base, ...) usages, 0 definitions), so every other rule in
+ * the styleguide reads it through a literal fallback instead of relying on
+ * inheritance — matched here with the same 8px fallback (0.5rem at the
+ * default 16px root) so calc(var(--base) * 8) doesn't silently resolve to an
+ * invalid declaration and drop to 0.
  */
 .site-footer {
-  margin-top: calc(var(--base) * 8);
+  margin-top: calc(var(--base, 8px) * 8);
 }
 
 .sidebar-bottom-sidebar {
-  margin-top: calc(var(--base) * 8);
-  margin-bottom: calc(var(--base) * -8);
+  margin-top: calc(var(--base, 8px) * 8);
+  margin-bottom: calc(var(--base, 8px) * -8);
 }
