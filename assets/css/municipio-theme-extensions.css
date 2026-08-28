@@ -53,3 +53,16 @@
   margin-top: calc(var(--base, 8px) * 8);
   margin-bottom: calc(var(--base, 8px) * -8);
 }
+
+/*
+ * A content area placed inside the readable article must remain inside that
+ * article. Municipio's o-grid--stretch utility otherwise makes nested grids
+ * viewport-wide, even though their module wrapper inherits the article width.
+ */
+.municipio-theme-extensions-content-area--inside .o-grid.o-grid--stretch {
+  width: 100%;
+  max-width: 100%;
+  left: auto;
+  right: auto;
+  transform: none;
+}

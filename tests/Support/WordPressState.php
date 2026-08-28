@@ -30,6 +30,7 @@ final class WordPressState
         self::$runtime = [
             'singular' => false,
             'queriedObject' => null,
+            'pageTemplate' => false,
             'postTypes' => [],
             'posts' => [],
             'lastGetPostsArguments' => [],

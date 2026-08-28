@@ -101,3 +101,47 @@ msgstr "Knappstorlek för flikmeny"
 #: source/Customizer/ResponsiveHeaderSettings.php
 msgid "Hero search placeholder"
 msgstr "Platshållartext i herosökning"
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Content layout"
+msgstr "Layout för innehåll"
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Default module width"
+msgstr "Standardbredd för moduler"
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Select the width modules should have when set to “inherit”."
+msgstr "Välj den bredd som moduler ska ha när satt till ”ärv”."
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Content area placement"
+msgstr "Placering i innehållsyta"
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Select how modules in the content area are placed in relation to the article."
+msgstr "Välj hur modulerna i innehållsytan ska placeras i förhållande till artikeln."
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Outside"
+msgstr "Utanför"
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Inside"
+msgstr "Inuti"
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Article content alignment"
+msgstr "Justering av artikelinnehåll"
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Select how the article content should be aligned."
+msgstr "Välj hur artikelinnehållet ska justeras."
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Left"
+msgstr "Vänsterställt"
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Center"
+msgstr "Centrerat"

@@ -73,6 +73,13 @@ if (!function_exists('get_queried_object_id')) {
     }
 }
 
+if (!function_exists('get_page_template_slug')) {
+    function get_page_template_slug(int $postId = 0): string|false
+    {
+        return WordPressState::$runtime['pageTemplate'];
+    }
+}
+
 if (!function_exists('get_post_type_object')) {
     function get_post_type_object(string $postType): ?object
     {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MunicipioThemeExtensions;
 
+use MunicipioThemeExtensions\Customizer\ContentLayoutSettings;
 use MunicipioThemeExtensions\Customizer\DrawerSettings;
 use MunicipioThemeExtensions\Customizer\HeaderSettings;
 use MunicipioThemeExtensions\Customizer\MenuSettings;
@@ -12,6 +13,8 @@ use MunicipioThemeExtensions\Customizer\ResponsiveHeaderSettings;
 use MunicipioThemeExtensions\Customizer\SecondaryNavigationPosition;
 use MunicipioThemeExtensions\Customizer\TypographySettings;
 use MunicipioThemeExtensions\Header\StandardHeader;
+use MunicipioThemeExtensions\Layout\ContentLayout;
+use MunicipioThemeExtensions\Layout\ModuleWidth;
 use MunicipioThemeExtensions\Navigation\BelowTitleNavigation;
 use MunicipioThemeExtensions\Navigation\PageHideSecondaryMenu;
 use MunicipioThemeExtensions\Navigation\SecondaryMenu;
@@ -27,6 +30,7 @@ final class Plugin
     public function register(): void
     {
         $headerSettings = new HeaderSettings();
+        $contentLayoutSettings = new ContentLayoutSettings();
         $drawerSettings = new DrawerSettings();
         $menuSettings = new MenuSettings();
         $onePageSettings = new OnePageSettings();
@@ -34,12 +38,15 @@ final class Plugin
         $typographySettings = new TypographySettings();
         $secondaryNavigationPosition = new SecondaryNavigationPosition();
         $standardHeader = new StandardHeader();
+        $contentLayout = new ContentLayout();
+        $moduleWidth = new ModuleWidth();
         $secondaryMenu = new SecondaryMenu();
         $pageHideSecondaryMenu = new PageHideSecondaryMenu();
         $belowTitleNavigation = new BelowTitleNavigation($pageHideSecondaryMenu);
         $onePageClassicContent = new ClassicContent();
 
         add_action('municipio_customizer_section_registered', [$headerSettings, 'register'], 10, 1);
+        add_action('municipio_customizer_section_registered', [$contentLayoutSettings, 'register'], 10, 1);
         add_action('municipio_customizer_section_registered', [$drawerSettings, 'register'], 10, 1);
         add_action('municipio_customizer_section_registered', [$menuSettings, 'register'], 10, 1);
         add_action('municipio_customizer_section_registered', [$onePageSettings, 'register'], 10, 1);
@@ -69,6 +76,16 @@ final class Plugin
         add_filter('Municipio/Template/viewData', [$secondaryMenu, 'filterViewData'], 10, 1);
         add_filter('Municipio/Template/viewData', [$pageHideSecondaryMenu, 'filterViewData'], 20, 1);
         add_filter('Municipio/Template/viewData', [$onePageClassicContent, 'filterViewData'], 10, 1);
+        add_filter('Municipio/Template/viewData', [$contentLayout, 'filterViewData'], 20, 1);
+        add_filter('Modularity/Display/BeforeModule::classes', [$moduleWidth, 'filterClasses'], 10, 1);
+        add_filter('Municipio/views/single/content-area/show', [$contentLayout, 'filterOuterContentArea'], 10, 1);
+        add_filter(
+            'Municipio/views/page-centered/content-area/show',
+            [$contentLayout, 'filterOuterContentArea'],
+            10,
+            1,
+        );
+        add_action('article_content_after', [$contentLayout, 'renderInsideContentArea']);
         add_filter(
             'Municipio/Controller/Singular/showTitleOnOnePage',
             [$onePageClassicContent, 'filterShowTitle'],

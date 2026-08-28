@@ -67,4 +67,15 @@ final class AssetsTest extends TestCase
         static::assertSame('test-version', $script['ver']);
         static::assertTrue($script['args']);
     }
+
+    public function testInsideContentAreaConstrainsStretchedGridsToTheArticle(): void
+    {
+        $styles = file_get_contents(dirname(__DIR__) . '/assets/css/municipio-theme-extensions.css');
+
+        static::assertIsString($styles);
+        static::assertMatchesRegularExpression(
+            '/\.municipio-theme-extensions-content-area--inside\s+\.o-grid\.o-grid--stretch\s*\{[^}]*width:\s*100%;[^}]*transform:\s*none;/s',
+            $styles,
+        );
+    }
 }

@@ -95,3 +95,47 @@ msgstr ""
 #: source/Customizer/ResponsiveHeaderSettings.php
 msgid "Hero search placeholder"
 msgstr ""
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Content layout"
+msgstr ""
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Default module width"
+msgstr ""
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Select the width modules should have when set to “inherit”."
+msgstr ""
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Content area placement"
+msgstr ""
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Select how modules in the content area are placed in relation to the article."
+msgstr ""
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Outside"
+msgstr ""
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Inside"
+msgstr ""
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Article content alignment"
+msgstr ""
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Select how the article content should be aligned."
+msgstr ""
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Left"
+msgstr ""
+
+#: source/Customizer/ContentLayoutSettings.php
+msgid "Center"
+msgstr ""

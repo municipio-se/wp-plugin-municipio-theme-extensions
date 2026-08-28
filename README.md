@@ -98,6 +98,21 @@ title choice, and lets Municipios own template render filtered classic content
 through the same content branch used for blocks. No page template or content is
 copied or migrated.
 
+## Content layout
+
+The plugin restores the three legacy content-layout settings inside Municipios
+existing **Page width** section: the default width for modules set to inherit,
+placement of the content module area inside or outside the article, and left or
+centered article content. Existing `mx_default_module_width`,
+`mx_content_area_placement`, and `mx_article_alignment` theme mods are read
+without migration or activation writes.
+
+Unsaved settings use the legacy defaults `grid-md-12`, `outside`, and `left`.
+Only an empty inherited Modularity width is replaced; explicitly saved widths
+remain untouched. Inside placement reuses Municipios article hook and sidebar
+partial and is limited to regular single and page-centered templates so One
+Page, archives, and other rendering paths retain their current behavior.
+
 ## Activation migration
 
 Activation runs a versioned, idempotent migration for the settings needed by the
