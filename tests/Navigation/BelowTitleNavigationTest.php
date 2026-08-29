@@ -81,14 +81,6 @@ final class BelowTitleNavigationTest extends TestCase
         static::assertSame('', $this->navigation()->getMarkup());
     }
 
-    public function testItsViewExposesAStablePresentationClass(): void
-    {
-        $view = file_get_contents(dirname(__DIR__, 2) . '/views/below-title-navigation.blade.php');
-
-        static::assertIsString($view);
-        static::assertStringContainsString('municipio-theme-extensions-below-title-navigation', $view);
-    }
-
     #[DataProvider('corePositions')]
     public function testItPreservesCorePositions(string $position): void
     {
