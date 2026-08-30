@@ -112,6 +112,9 @@ Only an empty inherited Modularity width is replaced; explicitly saved widths
 remain untouched. Inside placement reuses Municipios article hook and sidebar
 partial and is limited to regular single and page-centered templates so One
 Page, archives, and other rendering paths retain their current behavior.
+Centered readable articles fill the available column and remain capped by
+Municipios `--container-width-content` value, including values changed through
+the theme's width setting.
 
 ## Activation migration
 

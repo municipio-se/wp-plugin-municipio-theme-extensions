@@ -78,4 +78,16 @@ final class AssetsTest extends TestCase
             $styles,
         );
     }
+
+    public function testCenteredReadableArticlesKeepTheirConfiguredWidth(): void
+    {
+        $styles = file_get_contents(dirname(__DIR__) . '/assets/css/municipio-theme-extensions.css');
+
+        static::assertIsString($styles);
+        static::assertMatchesRegularExpression(
+            '/\.c-article\.c-article--readable-width\.u-margin__x--auto\s*\{[^}]*width:\s*100%;/s',
+            $styles,
+        );
+        static::assertStringNotContainsString('704px', $styles);
+    }
 }

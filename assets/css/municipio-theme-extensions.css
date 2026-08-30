@@ -66,3 +66,13 @@
   right: auto;
   transform: none;
 }
+
+/*
+ * Municipio centers readable articles with cross-axis auto margins inside a
+ * column flexbox. Those margins disable the flex item's normal stretch and can
+ * make a short article shrink to its contents. Restore the available width;
+ * Municipio's own max-width still applies --container-width-content.
+ */
+.c-article.c-article--readable-width.u-margin__x--auto {
+  width: 100%;
+}
