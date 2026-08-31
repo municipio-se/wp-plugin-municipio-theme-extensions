@@ -87,6 +87,9 @@ The existing `secondary_navigation_position=below_title` theme mod and
 backfilling data. The page field is registered with its legacy key and name only
 when Municipio or another plugin does not already own an equivalent field.
 Pages without eligible children produce no navigation wrapper.
+The navigation wrapper exposes the stable
+`municipio-theme-extensions-below-title-navigation` class so site-specific
+themes can style this presentation without depending on utility classes.
 
 ## One Page classic content
 
