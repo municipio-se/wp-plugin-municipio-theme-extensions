@@ -38,6 +38,7 @@ final class WordPressState
             'permalinks' => [],
             'fields' => [],
             'acfFields' => [],
+            'uniqueIdCounter' => 0,
         ];
     }
 }
