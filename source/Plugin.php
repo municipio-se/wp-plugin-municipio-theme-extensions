@@ -12,6 +12,7 @@ use MunicipioThemeExtensions\Customizer\OnePageSettings;
 use MunicipioThemeExtensions\Customizer\ResponsiveHeaderSettings;
 use MunicipioThemeExtensions\Customizer\SecondaryNavigationPosition;
 use MunicipioThemeExtensions\Customizer\TypographySettings;
+use MunicipioThemeExtensions\Component\RejectAutoLangAttribute;
 use MunicipioThemeExtensions\Header\StandardHeader;
 use MunicipioThemeExtensions\Layout\ContentLayout;
 use MunicipioThemeExtensions\Layout\ModuleWidth;
@@ -44,6 +45,7 @@ final class Plugin
         $pageHideSecondaryMenu = new PageHideSecondaryMenu();
         $belowTitleNavigation = new BelowTitleNavigation($pageHideSecondaryMenu);
         $onePageClassicContent = new ClassicContent();
+        $rejectAutoLangAttribute = new RejectAutoLangAttribute();
 
         add_action('municipio_customizer_section_registered', [$headerSettings, 'register'], 10, 1);
         add_action('municipio_customizer_section_registered', [$contentLayoutSettings, 'register'], 10, 1);
@@ -78,6 +80,7 @@ final class Plugin
         add_filter('Municipio/Template/viewData', [$onePageClassicContent, 'filterViewData'], 10, 1);
         add_filter('Municipio/Template/viewData', [$contentLayout, 'filterViewData'], 20, 1);
         add_filter('Modularity/Display/BeforeModule::classes', [$moduleWidth, 'filterClasses'], 10, 1);
+        add_filter('ComponentLibrary/Component/Element/Data', [$rejectAutoLangAttribute, 'filterData'], 10, 1);
         add_filter('Municipio/views/single/content-area/show', [$contentLayout, 'filterOuterContentArea'], 10, 1);
         add_filter(
             'Municipio/views/page-centered/content-area/show',
