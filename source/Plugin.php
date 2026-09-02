@@ -15,7 +15,6 @@ use MunicipioThemeExtensions\Customizer\TypographySettings;
 use MunicipioThemeExtensions\Header\StandardHeader;
 use MunicipioThemeExtensions\Layout\ContentLayout;
 use MunicipioThemeExtensions\Layout\ModuleWidth;
-use MunicipioThemeExtensions\Modularity\UniqueModuleId;
 use MunicipioThemeExtensions\Navigation\BelowTitleNavigation;
 use MunicipioThemeExtensions\Navigation\PageHideSecondaryMenu;
 use MunicipioThemeExtensions\Navigation\SecondaryMenu;
@@ -45,7 +44,6 @@ final class Plugin
         $pageHideSecondaryMenu = new PageHideSecondaryMenu();
         $belowTitleNavigation = new BelowTitleNavigation($pageHideSecondaryMenu);
         $onePageClassicContent = new ClassicContent();
-        $uniqueModuleId = new UniqueModuleId();
 
         add_action('municipio_customizer_section_registered', [$headerSettings, 'register'], 10, 1);
         add_action('municipio_customizer_section_registered', [$contentLayoutSettings, 'register'], 10, 1);
@@ -80,7 +78,6 @@ final class Plugin
         add_filter('Municipio/Template/viewData', [$onePageClassicContent, 'filterViewData'], 10, 1);
         add_filter('Municipio/Template/viewData', [$contentLayout, 'filterViewData'], 20, 1);
         add_filter('Modularity/Display/BeforeModule::classes', [$moduleWidth, 'filterClasses'], 10, 1);
-        add_filter('Modularity/Display/BeforeModule', [$uniqueModuleId, 'filterBeforeModule'], 10, 1);
         add_filter('Municipio/views/single/content-area/show', [$contentLayout, 'filterOuterContentArea'], 10, 1);
         add_filter(
             'Municipio/views/page-centered/content-area/show',

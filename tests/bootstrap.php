@@ -179,11 +179,3 @@ if (!function_exists('wp_enqueue_script')) {
         WordPressState::$enqueuedScripts[$handle] = compact('src', 'deps', 'ver', 'args');
     }
 }
-
-if (!function_exists('wp_unique_id')) {
-    function wp_unique_id(string $prefix = ''): string
-    {
-        WordPressState::$runtime['uniqueIdCounter'] = (WordPressState::$runtime['uniqueIdCounter'] ?? 0) + 1;
-        return $prefix . WordPressState::$runtime['uniqueIdCounter'];
-    }
-}
