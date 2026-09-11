@@ -15,6 +15,7 @@ use MunicipioThemeExtensions\Customizer\TypographySettings;
 use MunicipioThemeExtensions\Header\StandardHeader;
 use MunicipioThemeExtensions\Layout\ContentLayout;
 use MunicipioThemeExtensions\Layout\ModuleWidth;
+use MunicipioThemeExtensions\Layout\SectionPlacement;
 use MunicipioThemeExtensions\Navigation\BelowTitleNavigation;
 use MunicipioThemeExtensions\Navigation\PageHideSecondaryMenu;
 use MunicipioThemeExtensions\Navigation\SecondaryMenu;
@@ -40,6 +41,7 @@ final class Plugin
         $standardHeader = new StandardHeader();
         $contentLayout = new ContentLayout();
         $moduleWidth = new ModuleWidth();
+        $sectionPlacement = new SectionPlacement();
         $secondaryMenu = new SecondaryMenu();
         $pageHideSecondaryMenu = new PageHideSecondaryMenu();
         $belowTitleNavigation = new BelowTitleNavigation($pageHideSecondaryMenu);
@@ -78,6 +80,8 @@ final class Plugin
         add_filter('Municipio/Template/viewData', [$onePageClassicContent, 'filterViewData'], 10, 1);
         add_filter('Municipio/Template/viewData', [$contentLayout, 'filterViewData'], 20, 1);
         add_filter('Modularity/Display/BeforeModule::classes', [$moduleWidth, 'filterClasses'], 10, 1);
+        // Municipio defines its sidebar restrictions at priority 10.
+        add_filter('Modularity/Editor/SidebarIncompability', [$sectionPlacement, 'filterIncompatibility'], 20, 2);
         add_filter('Municipio/views/single/content-area/show', [$contentLayout, 'filterOuterContentArea'], 10, 1);
         add_filter(
             'Municipio/views/page-centered/content-area/show',

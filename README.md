@@ -20,6 +20,13 @@ The package type is `wordpress-plugin`, and `extra.installer-name` ensures that
 `wp-content/plugins/municipio-theme-extensions`. Activate **Municipio Theme
 Extensions** in WordPress after installation.
 
+## Sections in the content area
+
+All four Modularity Sections modules (Split, Full, Featured and Card) are
+allowed in `content-area`. The extension removes only that area's restriction
+after Municipio supplies its defaults. Restrictions for other areas and module
+types remain unchanged. This does not change saved content or frontend markup.
+
 ## Header settings
 
 The first release adds two fields to Municipios existing **Header → Appearance**
@@ -33,11 +40,10 @@ buttons, drawer navigation, other menus, and Municipio markup remain owned by
 Municipio. The configured color also applies to hover, focus, active, and
 visited states so generic link colors cannot reduce header contrast.
 
-For the standard header, the plugin also restores the saved
-`header_breakpoint`, `tab_menu_button_size`, and
-`hero_search_placeholder` settings in Municipios existing Header layout, Tab
-menu, and Search sections. Unsaved installations keep Municipios current
-`lg`, `sm`, and generated-placeholder defaults.
+For the standard header, the plugin also restores the saved `header_breakpoint`,
+`tab_menu_button_size`, and `hero_search_placeholder` settings in Municipios
+existing Header layout, Tab menu, and Search sections. Unsaved installations
+keep Municipios current `lg`, `sm`, and generated-placeholder defaults.
 
 The release also adds **Letter Spacing** as a subfield in Municipios existing
 **Typography → Button** control. The value is stored with the other
@@ -65,31 +71,31 @@ mobile, drawer, mega-menu, and breadcrumb data are not modified.
 The plugin extends Municipios existing drawer controls with a **Light** choice
 for both the main area and the optional secondary area. The choices retain
 Municipios setting names, modifier output, markup, focus handling, and
-responsive behavior. Their presentation uses the site's
-`--color-background` token with dark text, links, and icons.
+responsive behavior. Their presentation uses the site's `--color-background`
+token with dark text, links, and icons.
 
-Neither choice is a new default. New Municipio sites therefore retain
-Municipios standard drawer palette until an editor selects another value. LTS
-migrations can explicitly select both light values through their migration
-tooling without making plugin activation mutate site data.
+Neither choice is a new default. New Municipio sites therefore retain Municipios
+standard drawer palette until an editor selects another value. LTS migrations
+can explicitly select both light values through their migration tooling without
+making plugin activation mutate site data.
 
 ## Below-title secondary navigation
 
-The plugin also adds **Below title** to Municipios existing secondary
-navigation position field for supported Municipio versions from 6.43.3 up to,
-but not including, 8.0.0. On singular hierarchical posts, this mode renders
-published direct children in menu order after the article heading and before
-the regular content. Hidden menu items are excluded, and links use Municipios
-current secondary Button color.
+The plugin also adds **Below title** to Municipios existing secondary navigation
+position field for supported Municipio versions from 6.43.3 up to, but not
+including, 8.0.0. On singular hierarchical posts, this mode renders published
+direct children in menu order after the article heading and before the regular
+content. Hidden menu items are excluded, and links use Municipios current
+secondary Button color.
 
 The existing `secondary_navigation_position=below_title` theme mod and
 `page_hide_secondary_menu` post metadata are reused without writing or
 backfilling data. The page field is registered with its legacy key and name only
-when Municipio or another plugin does not already own an equivalent field.
-Pages without eligible children produce no navigation wrapper.
-The navigation wrapper exposes the stable
-`municipio-theme-extensions-below-title-navigation` class so site-specific
-themes can style this presentation without depending on utility classes.
+when Municipio or another plugin does not already own an equivalent field. Pages
+without eligible children produce no navigation wrapper. The navigation wrapper
+exposes the stable `municipio-theme-extensions-below-title-navigation` class so
+site-specific themes can style this presentation without depending on utility
+classes.
 
 ## One Page classic content
 
@@ -137,9 +143,9 @@ first release:
 
 Existing target values are never overwritten. Legacy theme mods remain in the
 database for troubleshooting and rollback, and the completed migration version
-is stored in `municipio_theme_extensions_migration_version`. The version
-check also runs after theme setup so an active Composer-installed plugin applies
-new migrations without a deactivate-and-reactivate cycle.
+is stored in `municipio_theme_extensions_migration_version`. The version check
+also runs after theme setup so an active Composer-installed plugin applies new
+migrations without a deactivate-and-reactivate cycle.
 
 ## Development
 
