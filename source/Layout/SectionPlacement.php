@@ -7,9 +7,10 @@ namespace MunicipioThemeExtensions\Layout;
 final class SectionPlacement
 {
     private const POST_TYPES = ['mod-section-split', 'mod-section-full', 'mod-section-featured', 'mod-section-card'];
+    private const CONTENT_AREAS = ['content-area', 'content-area-top', 'content-area-bottom'];
 
     /**
-     * Sections are allowed in the article content area by design. Preserve
+     * Sections are allowed in all three article content areas by design. Preserve
      * Municipio's restrictions for other areas and unrelated module types.
      * Reindex the list because the editor consumes it as a JSON array.
      *
@@ -26,7 +27,7 @@ final class SectionPlacement
 
         $specification['sidebar_incompability'] = array_values(array_filter(
             $specification['sidebar_incompability'],
-            static fn(mixed $area): bool => $area !== 'content-area',
+            static fn(mixed $area): bool => !in_array($area, self::CONTENT_AREAS, true),
         ));
 
         return $specification;

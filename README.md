@@ -23,9 +23,10 @@ Extensions** in WordPress after installation.
 ## Sections in the content area
 
 All four Modularity Sections modules (Split, Full, Featured and Card) are
-allowed in `content-area`. The extension removes only that area's restriction
-after Municipio supplies its defaults. Restrictions for other areas and module
-types remain unchanged. This does not change saved content or frontend markup.
+allowed in `content-area`, `content-area-top` and `content-area-bottom`. The
+extension removes only these areas' restrictions after Municipio supplies its
+defaults. Restrictions for other areas and module types remain unchanged. This
+does not change saved content or frontend markup.
 
 ## Header settings
 

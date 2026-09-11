@@ -9,18 +9,27 @@ use PHPUnit\Framework\TestCase;
 
 final class SectionPlacementTest extends TestCase
 {
-    public function testItAllowsEverySectionsModuleOnlyInContentArea(): void
+    public function testItAllowsEverySectionsModuleInAllThreeContentAreas(): void
     {
         $filter = new SectionPlacement();
         $specification = [
             'labels' => ['name' => 'Section'],
-            'sidebar_incompability' => ['content-area-top', 'content-area', 'content-area-bottom', 'right-sidebar'],
+            'sidebar_incompability' => [
+                'content-area-top',
+                'content-area',
+                'content-area-bottom',
+                'right-sidebar',
+                'left-sidebar',
+                'left-sidebar-bottom',
+                'footer-area',
+                'footer-area-top',
+            ],
         ];
 
         foreach (['mod-section-split', 'mod-section-full', 'mod-section-featured', 'mod-section-card'] as $postType) {
             $result = $filter->filterIncompatibility($specification, $postType);
             static::assertSame(
-                ['content-area-top', 'content-area-bottom', 'right-sidebar'],
+                ['right-sidebar', 'left-sidebar', 'left-sidebar-bottom', 'footer-area', 'footer-area-top'],
                 $result['sidebar_incompability'],
             );
             static::assertSame($specification['labels'], $result['labels']);
@@ -31,7 +40,12 @@ final class SectionPlacementTest extends TestCase
     public function testItPreservesOtherModulesAndAbsentRestrictions(): void
     {
         $filter = new SectionPlacement();
-        $specification = ['sidebar_incompability' => ['content-area', 'footer-area']];
+        $specification = ['sidebar_incompability' => [
+            'content-area',
+            'content-area-top',
+            'content-area-bottom',
+            'footer-area',
+        ]];
 
         foreach (['mod-text', 'mod-slider', 'mod-section-custom'] as $postType) {
             static::assertSame($specification, $filter->filterIncompatibility($specification, $postType));
