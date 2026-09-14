@@ -9,6 +9,9 @@ not a supported runtime.
 
 ## Installation
 
+See [RELEASING.md](RELEASING.md) for release gates, compatibility evidence,
+publication and rollback.
+
 Install the package with Composer:
 
 ```console
