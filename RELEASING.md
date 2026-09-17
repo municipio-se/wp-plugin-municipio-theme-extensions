@@ -2,10 +2,9 @@
 
 ## First stable release
 
-The planned first tag is 1.0.0 with independent SemVer. It is not ready to tag.
-Keep the current development header until the migration and reference gates
-below have been completed. Composer must derive its version from the immutable
-tag; do not add a version field to composer.json.
+The prepared first candidate is 1.0.0 with independent SemVer. It is unreleased
+until explicitly approved and published. Composer must derive its version from
+the immutable tag; do not add a version field to composer.json.
 
 The canonical [migration policy](docs/migrations.md) applies before every
 release. The stable contract covers documented settings, preserved data,
@@ -37,12 +36,35 @@ does not establish reference acceptance of the release.
 - Verify fresh installs, supported earlier states, existing schema-2 states,
   malformed or absent source data, preserved targets and repeated execution.
   Document the recovery procedure for both code and data.
-- Complete real editor checks for all four Sections types in the three content
-  areas, remaining placement restrictions, save/reload and frontend rendering.
-  Check the other documented theme features against their exact release delta.
+- Bind reference acceptance to the exact runtime delta. Nora accepted Split and
+  Full in all three content areas, save/reload, frontend and placement guards on
+  2026-09-16. Other module types and placement combinations are explicitly
+  accepted support limitations, not verified cases or a new release blocker.
 - Reconcile changelog, plugin header and release notes only after the above
   gates pass. Run composer validate --strict, composer format, composer test and
   composer lint; review any formatting changes.
+
+## Candidate evidence, 2026-09-17
+
+Runtime code remains identical to deployed dac5ead except for the plugin and
+asset version. No migration code or schema changed. Schema 2 is the direct path
+from absent/older markers; already deployed schema-2 sites remain no-ops.
+
+An isolated WordPress 6.9.4 multisite on PHP 8.3.33 passed eight persisted-data
+fixtures: fresh, direct/mapped legacy values, explicit targets, malformed
+sources, schema 1, deployed schema 2 and later imported card data. Migrations
+were repeated, blogs switched in reverse order, the pre-migration SQL export
+restored and compared with every fixture, then migration rerun successfully.
+This verifies the option-data recovery procedure, not a full customer disaster
+recovery drill. The reusable test is scripts/verify-package-migrations.php in
+Municipio Cloud Tooling. No customer database or deployed marker was changed.
+
+Before a data-changing deployment, pause writes and retain a consistent SQL
+export alongside the previous code and lockfile. Roll back code first with
+plugins/themes skipped in WP-CLI, restore the matching database export, verify
+theme_mods and municipio_theme_extensions_migration_version per blog, then
+resume requests. Restoring an old database after new content is accepted needs a
+separate reconciliation decision; it must not silently discard edits.
 
 ## Publication and rollback
 
