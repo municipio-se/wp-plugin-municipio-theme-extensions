@@ -2,9 +2,10 @@
 
 ## First stable release
 
-The prepared first candidate is 1.0.0 with independent SemVer. It is unreleased
-until explicitly approved and published. Composer must derive its version from
-the immutable tag; do not add a version field to composer.json.
+Version
+[1.0.0](https://github.com/municipio-se/wp-plugin-municipio-theme-extensions/releases/tag/1.0.0)
+was published on 2026-09-17. Composer derives the version from the immutable Git
+tag; do not add a version field to composer.json.
 
 The canonical [migration policy](docs/migrations.md) applies before every
 release. The stable contract covers documented settings, preserved data,
@@ -23,7 +24,7 @@ The existing isolated suite passed on PHP 8.3.33 on 2026-09-14: 72 tests and 209
 assertions. Composer validation and lint passed with existing diagnostics. This
 does not establish reference acceptance of the release.
 
-## Gates before 1.0.0
+## Gates for future releases
 
 - Inventory migration markers and relevant source/target values per supported
   installation and multisite blog. The current activation schema is 2. A
@@ -44,7 +45,7 @@ does not establish reference acceptance of the release.
   gates pass. Run composer validate --strict, composer format, composer test and
   composer lint; review any formatting changes.
 
-## Candidate evidence, 2026-09-17
+## Release evidence, 2026-09-17
 
 Runtime code remains identical to deployed dac5ead except for the plugin and
 asset version. No migration code or schema changed. Schema 2 is the direct path
@@ -69,12 +70,24 @@ separate reconciliation decision; it must not silently discard edits.
 ## Publication and rollback
 
 Obtain approval for the exact release commit and compatibility evidence. Publish
-an annotated 1.0.0 tag and a matching GitHub release. Verify Packagist indexing,
-the source/dist references against the peeled tag commit and a clean Composer
-installation. Never move a public tag; publish a new version for corrections.
+an annotated version tag and a matching GitHub release. Verify Packagist
+indexing, the source/dist references against the peeled tag commit and a clean
+Composer installation. Never move a public tag; publish a new version for
+corrections.
 
 Approved consumers use ^1.0 with a reviewed and committed lockfile. Deployment
 and functional verification remain separate from package publication. Before
 deploying, retain the previous code/lockfile and a tested data recovery point.
 Returning to an older lockfile alone does not undo a migration. Deleting legacy
 values requires a separate explicit decision.
+
+## Publication evidence, 2026-09-17
+
+The published tag was verified against Composer source/dist references and a
+clean installation. Nora stage and production adopted 1.0.0 with WordPress
+6.9.4, PHP 8.3.6 and Municipio 6.43.3. Acceptance is limited to the documented
+reference cases and preserved configuration.
+
+This documentation was corrected after publication. The immutable 1.0.0 archive
+retains the original candidate wording. Never move the tag to include this
+documentation correction.
