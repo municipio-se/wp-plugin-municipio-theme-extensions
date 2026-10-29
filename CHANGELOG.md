@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.0-rc.8 — unpublished candidate
+
+Reserve the configured hover palette for pointer hover. Keyboard focus keeps
+its visible outline without leaving a hover-colored row after clicking.
+
 ## 1.1.0-rc.7 — unpublished candidate
 
 Move nesting indentation inside each link so hover and click targets span the

@@ -71,11 +71,7 @@
   color: var(--mte-tree-open-text, var(--c-nav-v-color-contrasting, inherit));
 }
 
-.mte-tree .mte-tree__list.c-nav > .c-nav__item > .c-nav__item-wrapper:hover,
-.mte-tree
-  .mte-tree__list.c-nav
-  > .c-nav__item
-  > .c-nav__item-wrapper:focus-within {
+.mte-tree .mte-tree__list.c-nav > .c-nav__item > .c-nav__item-wrapper:hover {
   background: var(
     --mte-tree-hover-background,
     var(--c-nav-v-background-active, transparent)
