@@ -139,3 +139,27 @@ msgstr ""
 #: source/Customizer/ContentLayoutSettings.php
 msgid "Center"
 msgstr ""
+
+#: source/Customizer/TreeNavigationSettings.php
+msgid "Tree navigation in the mobile menu"
+msgstr ""
+
+#: source/Customizer/TreeNavigationSettings.php
+msgid "Tree navigation in the sidebar"
+msgstr ""
+
+#: source/Navigation/TreeNavigation.php
+msgid "Expand"
+msgstr ""
+
+#: source/Navigation/TreeNavigation.php
+msgid "Collapse"
+msgstr ""
+
+#: source/Navigation/TreeNavigation.php
+msgid "Loading navigation…"
+msgstr ""
+
+#: views/tree/sidebar/partials/navigation/sidebar.blade.php
+msgid "Side navigation"
+msgstr ""

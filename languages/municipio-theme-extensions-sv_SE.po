@@ -145,3 +145,27 @@ msgstr "Vänsterställt"
 #: source/Customizer/ContentLayoutSettings.php
 msgid "Center"
 msgstr "Centrerat"
+
+#: source/Customizer/TreeNavigationSettings.php
+msgid "Tree navigation in the mobile menu"
+msgstr "Trädnavigation i mobilmenyn"
+
+#: source/Customizer/TreeNavigationSettings.php
+msgid "Tree navigation in the sidebar"
+msgstr "Trädnavigation i sidomenyn"
+
+#: source/Navigation/TreeNavigation.php
+msgid "Expand"
+msgstr "Expandera"
+
+#: source/Navigation/TreeNavigation.php
+msgid "Collapse"
+msgstr "Fäll ihop"
+
+#: source/Navigation/TreeNavigation.php
+msgid "Loading navigation…"
+msgstr "Laddar navigation…"
+
+#: views/tree/sidebar/partials/navigation/sidebar.blade.php
+msgid "Side navigation"
+msgstr "Sidnavigation"

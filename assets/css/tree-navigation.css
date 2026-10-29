@@ -1,0 +1,89 @@
+.mte-tree {
+  min-block-size: 6rem;
+}
+
+.mte-tree__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mte-tree__list .mte-tree__list {
+  padding-inline-start: 1rem;
+}
+
+.mte-tree [hidden],
+.mte-mobile__content [hidden] {
+  display: none;
+}
+
+.mte-tree .c-nav__item-wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+.mte-tree .c-nav__link {
+  flex: 1;
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+  padding: 0.75rem;
+  color: inherit;
+}
+
+.mte-tree [aria-current="page"] {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.mte-tree .is-current > .c-nav__item-wrapper {
+  background: var(--c-nav-v-background-active, transparent);
+  color: var(--c-nav-v-color-contrasting-active, inherit);
+}
+
+.mte-tree .is-open:not(.is-current) > .c-nav__item-wrapper {
+  background: var(--c-nav-v-background-expanded, transparent);
+}
+
+.mte-tree.c-nav--bordered .c-nav__item-wrapper {
+  border-block-end: 1px solid var(--c-nav-v-divider-color, currentColor);
+}
+
+.mte-tree :focus-visible,
+.mte-mobile__close:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -2px;
+}
+
+.mte-tree__toggle,
+.mte-mobile__close {
+  min-inline-size: 2.75rem;
+  min-block-size: 2.75rem;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.mte-mobile__content {
+  transform: none;
+  visibility: visible;
+  opacity: 1;
+  inset: 0 0 0 auto;
+  margin: 0;
+  border: 0;
+  padding: 1rem;
+  block-size: 100dvh;
+  max-block-size: 100dvh;
+  inline-size: min(30rem, 100%);
+  max-inline-size: 100%;
+  overflow-y: auto;
+}
+
+dialog.mte-mobile__content:not([open]) {
+  display: none;
+}
+
+.mte-mobile__content::backdrop {
+  background: rgb(0 0 0 / 50%);
+}

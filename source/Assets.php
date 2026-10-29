@@ -25,6 +25,24 @@ final class Assets
 
     public function enqueue(): void
     {
+        if (
+            Customizer\TreeNavigationSettings::enabled(Customizer\TreeNavigationSettings::MOBILE)
+            || Customizer\TreeNavigationSettings::enabled(Customizer\TreeNavigationSettings::SIDEBAR)
+        ) {
+            wp_enqueue_style(
+                'municipio-theme-extensions-tree',
+                plugins_url('assets/css/tree-navigation.css', $this->pluginFile),
+                [],
+                $this->version,
+            );
+            wp_enqueue_script(
+                'municipio-theme-extensions-tree',
+                plugins_url('assets/js/tree-navigation.js', $this->pluginFile),
+                [],
+                $this->version,
+                true,
+            );
+        }
         wp_enqueue_style(
             self::STYLE_HANDLE,
             plugins_url('assets/css/municipio-theme-extensions.css', $this->pluginFile),

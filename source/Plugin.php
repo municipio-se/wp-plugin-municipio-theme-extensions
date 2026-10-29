@@ -98,5 +98,23 @@ final class Plugin
         );
 
         (new Assets($this->pluginFile, $this->version))->register();
+
+        $treeSettings = new Customizer\TreeNavigationSettings();
+        $treeEndpoint = new Navigation\TreeEndpoint();
+        $treeNavigation = new Navigation\TreeNavigation($treeEndpoint);
+        add_action('municipio_customizer_section_registered', [$treeSettings, 'register'], 10, 1);
+        add_filter('Municipio/viewPaths', [$treeNavigation, 'viewPaths']);
+        add_filter('Municipio/Template/viewData', [$treeNavigation, 'viewData'], 100);
+        add_action('rest_api_init', [$treeEndpoint, 'register']);
+        foreach (['clean_post_cache', 'wp_update_nav_menu', 'wp_delete_nav_menu', 'switch_theme'] as $hook) {
+            add_action($hook, [$treeEndpoint, 'invalidate']);
+        }
+        add_action('updated_option', [$treeEndpoint, 'optionChanged']);
+        add_action('added_option', [$treeEndpoint, 'optionChanged']);
+        add_action('deleted_option', [$treeEndpoint, 'optionChanged']);
+        foreach (['added_post_meta', 'updated_post_meta', 'deleted_post_meta'] as $hook) {
+            add_action($hook, [$treeEndpoint, 'metaChanged'], 10, 3);
+        }
+        add_filter('Municipio/Navigation/Cache/Key', [$treeEndpoint, 'cacheKey'], 100);
     }
 }
