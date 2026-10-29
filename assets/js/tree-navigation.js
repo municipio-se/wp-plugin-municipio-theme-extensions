@@ -44,8 +44,12 @@
       if (this.started) return;
       this.started = true;
       const status = this.nav.querySelector('[role="status"]');
+      const indicator = this.nav
+        .closest("[data-tree-dialog-content]")
+        ?.querySelector("[data-tree-loading]");
       const reserve = this.nav.querySelector("[data-tree-reserve]");
       status.hidden = false;
+      indicator?.classList.add("is-loading");
       this.nav.setAttribute("aria-busy", "true");
       try {
         const data = await load(this.nav);
@@ -84,13 +88,14 @@
         this.last = null;
       } finally {
         status.hidden = true;
+        indicator?.classList.remove("is-loading");
         this.nav.removeAttribute("aria-busy");
       }
     }
 
     build(nodes, parent, currentKey) {
       const list = document.createElement("ul");
-      list.className = "c-nav c-nav--vertical mte-tree__list";
+      list.className = "c-nav c-nav--vertical unlist mte-tree__list";
       list.role = "group";
       for (const node of nodes) {
         if (

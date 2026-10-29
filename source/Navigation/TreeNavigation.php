@@ -58,7 +58,7 @@ final class TreeNavigation
 
     private function reserve(array $items, string $path = ''): string
     {
-        $html = '<ul class="c-nav c-nav--vertical mte-tree__list">';
+        $html = '<ul class="c-nav c-nav--vertical unlist mte-tree__list">';
         foreach (array_values($items) as $index => $item) {
             $key = $path . '/' . $index . ':' . (string) ($item['id'] ?? '');
             $html .= '<li class="c-nav__item"><div class="c-nav__item-wrapper">';

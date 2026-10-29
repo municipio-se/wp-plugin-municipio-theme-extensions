@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0-rc.4 — unpublished candidate
+
+Apply the theme's navigation list reset to both fallback and loaded trees,
+removing prose-list spacing and the inset hover background. Move mobile loading
+feedback to a reserved header slot using the Material Symbols progress_activity
+icon, with a screen-reader status and reduced-motion support.
+
 ## 1.1.0-rc.3 — unpublished candidate
 
 Restore the theme drawer width, link spacing, right-aligned close control with

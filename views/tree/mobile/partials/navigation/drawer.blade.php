@@ -11,10 +11,15 @@
         <div id="{{ $treePanelId }}" class="c-drawer c-drawer--right c-drawer--{{ !empty($mobileSecondaryMenu['items']) ? 'duotone' : 'monotone' }} {{ implode(' ', $treeDrawerModifiers) }} s-drawer-menu mte-mobile__content" data-tree-dialog-content aria-label="{{ $lang->menu }}">
             <div class="c-drawer__header">
                 @includeWhen($showMobileSearchDrawer, 'partials.search.drawer-search-form', ['classList' => ['search-form', 'u-margin__top--2', 'u-width--100']])
-                <button type="button" class="c-drawer__close mte-mobile__close" data-tree-close hidden>
+                <div class="mte-mobile__controls">
+                    <span class="mte-mobile__loading" data-tree-loading aria-hidden="true">
+                        @icon(['icon' => 'progress_activity', 'size' => 'md']) @endicon
+                    </span>
+                    <button type="button" class="c-drawer__close mte-mobile__close" data-tree-close hidden>
                     <span>{{ $lang->close }}</span>
                     @icon(['icon' => 'close', 'size' => 'md']) @endicon
-                </button>
+                    </button>
+                </div>
             </div>
             {!! $themeExtensionsTree($mobileMenu['items'], $lang->menu, ['c-nav--drawer', 'site-nav-mobile__primary', 's-nav-drawer', 's-nav-drawer-primary', !empty($customizer->drawerDivider) ? 'c-nav--bordered' : '', !empty($customizer->drawerDividerTopLevelOnly) ? 'c-nav--bordered-top-level' : ''], true) !!}
             @if (!empty($mobileSecondaryMenu['items']))

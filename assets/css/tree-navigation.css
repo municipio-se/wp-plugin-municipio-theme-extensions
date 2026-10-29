@@ -78,6 +78,48 @@
   padding: var(--base, 8px);
 }
 
+.mte-mobile__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--base, 8px);
+}
+
+/* Keep the indicator's slot in the header even before/after the request. */
+.mte-mobile__loading {
+  display: inline-flex;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  visibility: hidden;
+}
+
+.mte-mobile__loading.is-loading {
+  visibility: visible;
+  animation: mte-tree-loading 1s linear infinite;
+}
+
+.mte-mobile__content .mte-tree__status {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@keyframes mte-tree-loading {
+  to {
+    rotate: 1turn;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mte-mobile__loading.is-loading {
+    animation: none;
+  }
+}
+
 /* Native dialog owns visibility; outrank Municipio's two-class off-screen drawer rule. */
 .c-drawer.mte-mobile__content[data-tree-dialog-content] {
   transform: none;
