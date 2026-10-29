@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.0-rc.10 — unpublished candidate
+
+Reduce the secondary mobile menu's icon-to-text gap from three spacing units
+to one, leaving other navigation surfaces unchanged.
+
 ## 1.1.0-rc.9 — unpublished candidate
 
 Expand the current page as well as its ancestors on initial tree load so its

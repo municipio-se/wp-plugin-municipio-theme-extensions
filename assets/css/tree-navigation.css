@@ -142,6 +142,10 @@
   gap: var(--base, 8px);
 }
 
+.mte-mobile__content .site-nav-mobile__secondary.c-nav .c-nav__link {
+  gap: var(--base, 8px);
+}
+
 /* Keep the indicator's slot in the header even before/after the request. */
 .mte-mobile__loading {
   display: inline-flex;
