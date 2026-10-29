@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0-rc.5 — unpublished candidate
+
+Use normal block flow inside the mobile panel so expanded tree content cannot
+be compressed by the inherited flex layout and overlapped by secondary links.
+Remove dividers from both mobile menus without changing sidebar settings.
+
 ## 1.1.0-rc.4 — unpublished candidate
 
 Apply the theme's navigation list reset to both fallback and loaded trees,

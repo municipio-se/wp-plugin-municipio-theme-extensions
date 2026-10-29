@@ -18,6 +18,7 @@ test("native mobile dialog overrides Municipio drawer hiding in either styleshee
     const dialog = dom.window.document.querySelector("dialog");
     const style = dom.window.getComputedStyle(dialog);
     assert.equal(style.transform, "none");
+    assert.equal(style.display, "block");
     assert.equal(style.visibility, "visible");
     assert.equal(style.opacity, "1");
     dialog.removeAttribute("open");
