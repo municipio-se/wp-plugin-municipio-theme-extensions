@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0-rc.2 — unpublished candidate
+
+Fix the native mobile dialog remaining off-screen after opening because
+Municipio's drawer transform had higher CSS specificity. Disable the inherited
+drawer transition so native dialog visibility takes effect immediately.
+
 ## 1.1.0-rc.1 — unpublished candidate
 
 Adds independently enabled mobile and sidebar tree navigation with keyboard

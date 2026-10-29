@@ -2,6 +2,30 @@ const { test } = require("node:test");
 const assert = require("node:assert/strict");
 const { readFileSync } = require("node:fs");
 const { JSDOM } = require("jsdom");
+
+test("native mobile dialog overrides Municipio drawer hiding in either stylesheet order", () => {
+  // Municipio 6.43.3 keeps a right drawer off-screen until its own JS adds is-open.
+  const upstream = `.c-drawer { visibility: hidden; opacity: 0; display: flex; transform: translate(-100%); }
+    .c-drawer.c-drawer--right { transform: translate(100%); right: 0; left: initial; }`;
+  const css = readFileSync(
+    require.resolve("../assets/css/tree-navigation.css"),
+    "utf8",
+  );
+  for (const styles of [upstream + css, css + upstream]) {
+    const dom = new JSDOM(
+      `<style>${styles}</style><dialog class="c-drawer c-drawer--right mte-mobile__content" data-tree-dialog-content open></dialog>`,
+    );
+    const dialog = dom.window.document.querySelector("dialog");
+    const style = dom.window.getComputedStyle(dialog);
+    assert.equal(style.transform, "none");
+    assert.equal(style.visibility, "visible");
+    assert.equal(style.opacity, "1");
+    dialog.removeAttribute("open");
+    assert.equal(dom.window.getComputedStyle(dialog).display, "none");
+    dom.window.close();
+  }
+});
+
 const script = readFileSync(
   require.resolve("../assets/js/tree-navigation.js"),
   "utf8",

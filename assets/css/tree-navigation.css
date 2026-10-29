@@ -65,8 +65,10 @@
   cursor: pointer;
 }
 
-.mte-mobile__content {
+/* Native dialog owns visibility; outrank Municipio's two-class off-screen drawer rule. */
+.c-drawer.mte-mobile__content[data-tree-dialog-content] {
   transform: none;
+  transition: none;
   visibility: visible;
   opacity: 1;
   inset: 0 0 0 auto;
