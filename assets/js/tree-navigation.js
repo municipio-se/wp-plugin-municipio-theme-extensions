@@ -290,6 +290,47 @@
     const dialog = document.createElement("dialog");
     for (const attribute of content.attributes)
       dialog.setAttribute(attribute.name, attribute.value);
+    let motion;
+    let closing = false;
+    const animatePanel = (opening) => {
+      const from = opening
+        ? { transform: "translateX(100%)", opacity: 0 }
+        : {
+            transform: getComputedStyle(dialog).transform,
+            opacity: getComputedStyle(dialog).opacity,
+          };
+      motion?.cancel();
+      motion = null;
+      if (
+        !dialog.animate ||
+        window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+      )
+        return;
+      motion = dialog.animate(
+        [
+          from,
+          {
+            transform: opening ? "none" : "translateX(100%)",
+            opacity: opening ? 1 : 0,
+          },
+        ],
+        {
+          duration: 300,
+          easing: opening ? "ease-out" : "ease-in",
+          fill: "forwards",
+        },
+      );
+      return motion;
+    };
+    const dismiss = () => {
+      if (!dialog.open || closing) return;
+      closing = true;
+      dialog.setAttribute("data-tree-closing", "");
+      // Keep the modal in the top layer until its exit animation finishes.
+      const animation = animatePanel(false);
+      if (animation) animation.onfinish = () => dialog.close();
+      else dialog.close();
+    };
     dialog.setAttribute("closedby", "any");
     if (!("closedBy" in dialog)) {
       // Older browsers expose backdrop pointer events on the dialog itself.
@@ -311,9 +352,9 @@
         startedOutside = false;
       });
       dialog.addEventListener("click", (event) => {
-        const dismiss = startedOutside && outside(event);
+        const shouldDismiss = startedOutside && outside(event);
         startedOutside = false;
-        if (dismiss && dialog.open) dialog.close();
+        if (shouldDismiss) dismiss();
       });
     }
     dialog.append(...content.childNodes);
@@ -330,11 +371,23 @@
     close.hidden = false;
     const instance = instances.get(dialog.querySelector("[data-tree-url]"));
     opener.addEventListener("click", () => {
+      if (dialog.open) return;
       dialog.showModal();
+      animatePanel(true);
       instance.focus();
       instance.start();
     });
-    close.addEventListener("click", () => dialog.close());
-    dialog.addEventListener("close", () => opener.focus());
+    close.addEventListener("click", dismiss);
+    dialog.addEventListener("cancel", (event) => {
+      event.preventDefault();
+      dismiss();
+    });
+    dialog.addEventListener("close", () => {
+      motion?.cancel();
+      motion = null;
+      closing = false;
+      dialog.removeAttribute("data-tree-closing");
+      opener.focus();
+    });
   });
 })();

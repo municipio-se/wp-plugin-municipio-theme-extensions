@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0-rc.12 — unpublished candidate
+
+Animate the mobile drawer and backdrop on entry and dismissal, matching the
+theme's 300 ms slide and fade. Keep the dialog modal through exit and restore
+trigger focus afterwards. Respect reduced motion and handle dismissal during
+entry without restarting repeated close requests.
+
 ## 1.1.0-rc.11 — unpublished candidate
 
 Close the mobile menu on backdrop clicks with native dialog light dismissal

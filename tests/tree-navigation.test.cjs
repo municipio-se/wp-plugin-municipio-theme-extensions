@@ -273,3 +273,96 @@ test("mobile open is lazy, restores the last node and returns focus on close", a
   assert.equal(env.document.activeElement.textContent, "Other");
   assert.equal(env.calls(), 1);
 });
+
+test("mobile dismissal waits for animation and handles closing during entry", () => {
+  for (const trigger of ["button", "cancel", "backdrop"]) {
+    const animations = [];
+    const env = setup(
+      `<details data-tree-panel><summary>Menu</summary><div id="panel" data-tree-dialog-content><button data-tree-close>Close</button>${markup().replace('data-tree-mobile="false"', 'data-tree-mobile="true"')}</div></details>`,
+      undefined,
+      (window) => {
+        delete window.HTMLDialogElement.prototype.closedBy;
+        window.matchMedia = () => ({ matches: false });
+        window.HTMLDialogElement.prototype.showModal = function () {
+          this.open = true;
+        };
+        window.HTMLDialogElement.prototype.close = function () {
+          this.open = false;
+          this.dispatchEvent(new window.Event("close"));
+        };
+        window.Element.prototype.animate = function (frames, options) {
+          const animation = {
+            frames,
+            options,
+            cancelled: false,
+            cancel() {
+              this.cancelled = true;
+            },
+          };
+          animations.push(animation);
+          return animation;
+        };
+      },
+    );
+    const opener = env.document.querySelector("[aria-haspopup=dialog]");
+    const dialog = env.document.querySelector("dialog");
+    opener.click();
+    assert.equal(animations[0].options.duration, 300);
+    assert.equal(animations[0].options.easing, "ease-out");
+    if (trigger === "button")
+      env.document.querySelector("[data-tree-close]").click();
+    if (trigger === "cancel") {
+      const event = new env.dom.window.Event("cancel", { cancelable: true });
+      dialog.dispatchEvent(event);
+      assert.equal(event.defaultPrevented, true);
+    }
+    if (trigger === "backdrop") {
+      for (const type of ["pointerdown", "click"])
+        dialog.dispatchEvent(
+          new env.dom.window.MouseEvent(type, { clientX: -1, button: 0 }),
+        );
+    }
+    assert.equal(animations[0].cancelled, true);
+    assert.equal(dialog.open, true, "Dialog stays modal during exit");
+    assert.equal(animations[1].options.easing, "ease-in");
+    env.document.querySelector("[data-tree-close]").click();
+    assert.equal(
+      animations.length,
+      2,
+      "Repeated dismissal must not restart exit",
+    );
+    animations[1].onfinish();
+    assert.equal(dialog.open, false);
+    assert.equal(env.document.activeElement, opener);
+    assert.equal(dialog.hasAttribute("data-tree-closing"), false);
+    opener.click();
+    assert.equal(dialog.open, true);
+    assert.equal(animations.length, 3);
+    env.dom.window.close();
+  }
+});
+
+test("reduced motion opens and closes immediately without animation", () => {
+  const env = setup(
+    `<details data-tree-panel><summary>Menu</summary><div id="panel" data-tree-dialog-content><button data-tree-close>Close</button>${markup().replace('data-tree-mobile="false"', 'data-tree-mobile="true"')}</div></details>`,
+    undefined,
+    (window) => {
+      window.matchMedia = () => ({ matches: true });
+      window.Element.prototype.animate = () =>
+        assert.fail("Reduced motion must not animate");
+      window.HTMLDialogElement.prototype.showModal = function () {
+        this.open = true;
+      };
+      window.HTMLDialogElement.prototype.close = function () {
+        this.open = false;
+        this.dispatchEvent(new window.Event("close"));
+      };
+    },
+  );
+  const opener = env.document.querySelector("[aria-haspopup=dialog]");
+  opener.click();
+  env.document.querySelector("[data-tree-close]").click();
+  assert.equal(env.document.querySelector("dialog").open, false);
+  assert.equal(env.document.activeElement, opener);
+  env.dom.window.close();
+});
