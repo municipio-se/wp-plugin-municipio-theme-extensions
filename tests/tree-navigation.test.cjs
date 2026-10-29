@@ -223,6 +223,7 @@ test("malformed or unsafe data preserves the reserve without inserting executabl
 test("mobile open is lazy, restores the last node and returns focus on close", async () => {
   const html = `<details data-tree-panel><summary class="trigger">Menu</summary><div id="panel" data-tree-dialog-content aria-label="Menu"><button data-tree-close hidden>Close</button>${markup().replace('data-tree-mobile="false"', 'data-tree-mobile="true"')}</div></details>`;
   const env = setup(html, undefined, (window) => {
+    delete window.HTMLDialogElement.prototype.closedBy;
     window.HTMLDialogElement.prototype.showModal = function () {
       this.open = true;
     };
@@ -237,6 +238,34 @@ test("mobile open is lazy, restores the last node and returns focus on close", a
   assert.equal(env.document.activeElement.textContent, "Child");
   await tick();
   assert.equal(env.calls(), 1);
+  const dialog = env.document.querySelector("dialog");
+  assert.equal(dialog.getAttribute("closedby"), "any");
+  dialog.getBoundingClientRect = () => ({
+    left: 400,
+    right: 720,
+    top: 0,
+    bottom: 800,
+  });
+  const pointer = (type, x) =>
+    dialog.dispatchEvent(
+      new env.dom.window.MouseEvent(type, {
+        bubbles: true,
+        button: 0,
+        clientX: x,
+        clientY: 100,
+      }),
+    );
+  pointer("pointerdown", 500);
+  pointer("click", 500);
+  assert.equal(dialog.open, true, "Panel whitespace must not dismiss");
+  pointer("pointerdown", 500);
+  pointer("click", 200);
+  assert.equal(dialog.open, true, "Dragging out of the panel must not dismiss");
+  pointer("pointerdown", 200);
+  pointer("click", 200);
+  assert.equal(dialog.open, false);
+  assert.equal(env.document.activeElement, opener);
+  opener.click();
   key(env.dom, "End");
   env.document.querySelector("[data-tree-close]").click();
   assert.equal(env.document.activeElement, opener);

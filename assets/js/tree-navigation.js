@@ -290,6 +290,32 @@
     const dialog = document.createElement("dialog");
     for (const attribute of content.attributes)
       dialog.setAttribute(attribute.name, attribute.value);
+    dialog.setAttribute("closedby", "any");
+    if (!("closedBy" in dialog)) {
+      // Older browsers expose backdrop pointer events on the dialog itself.
+      const outside = (event) => {
+        const bounds = dialog.getBoundingClientRect();
+        return (
+          event.target === dialog &&
+          (event.clientX < bounds.left ||
+            event.clientX > bounds.right ||
+            event.clientY < bounds.top ||
+            event.clientY > bounds.bottom)
+        );
+      };
+      let startedOutside = false;
+      dialog.addEventListener("pointerdown", (event) => {
+        startedOutside = event.button === 0 && outside(event);
+      });
+      dialog.addEventListener("pointercancel", () => {
+        startedOutside = false;
+      });
+      dialog.addEventListener("click", (event) => {
+        const dismiss = startedOutside && outside(event);
+        startedOutside = false;
+        if (dismiss && dialog.open) dialog.close();
+      });
+    }
     dialog.append(...content.childNodes);
     content.remove();
     document.body.append(dialog);

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0-rc.11 — unpublished candidate
+
+Close the mobile menu on backdrop clicks with native dialog light dismissal
+where supported and a pointer fallback elsewhere. Preserve focus restoration
+and avoid closing for clicks inside the panel or drags starting inside it.
+
 ## 1.1.0-rc.10 — unpublished candidate
 
 Reduce the secondary mobile menu's icon-to-text gap from three spacing units
