@@ -12,6 +12,7 @@ final class TreeNavigationSettings
     public const SIDEBAR = 'municipio_theme_extensions_sidebar_tree_navigation';
     public const COLORS = 'municipio_theme_extensions_mobile_tree_colors';
     private const COLOR_LABELS = [
+        'background' => 'Panel background',
         'level_2' => 'Second level background',
         'level_deeper' => 'Deeper levels background',
         'hover_background' => 'Hover background',
@@ -64,14 +65,23 @@ final class TreeNavigationSettings
     {
         $values = get_theme_mod(self::COLORS, []);
         $declarations = [];
+        $panel = '';
         foreach (self::COLOR_LABELS as $key => $label) {
             $value = is_array($values) ? $values[$key] ?? null : null;
             // Empty choices inherit the site's existing navigation palette.
             if (is_string($value) && preg_match('/^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i', $value) === 1) {
+                if ($key === 'background') {
+                    // The existing light drawer variant consumes this token, scoped to this panel.
+                    $panel = '.mte-mobile__content{--color-background:' . $value . '}';
+                    continue;
+                }
                 $declarations[] = '--mte-tree-' . str_replace('_', '-', $key) . ':' . $value;
             }
         }
-        return $declarations === [] ? '' : '.mte-tree[data-tree-mobile="true"]{' . implode(';', $declarations) . '}';
+        return (
+            $panel
+            . ($declarations === [] ? '' : '.mte-tree[data-tree-mobile="true"]{' . implode(';', $declarations) . '}')
+        );
     }
 
     public static function enabled(string $setting): bool

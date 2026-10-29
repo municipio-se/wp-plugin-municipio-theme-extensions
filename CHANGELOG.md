@@ -4,6 +4,7 @@
 
 Reserve the configured hover palette for pointer hover. Keyboard focus keeps
 its visible outline without leaving a hover-colored row after clicking.
+Allow the light mobile panel background to differ from the site's page background.
 
 ## 1.1.0-rc.7 — unpublished candidate
 

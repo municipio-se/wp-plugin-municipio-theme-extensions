@@ -169,6 +169,10 @@ msgid "Mobile tree navigation colors"
 msgstr ""
 
 #: source/Customizer/TreeNavigationSettings.php
+msgid "Panel background"
+msgstr ""
+
+#: source/Customizer/TreeNavigationSettings.php
 msgid "Second level background"
 msgstr ""
 
