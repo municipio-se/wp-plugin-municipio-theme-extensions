@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.1.0-rc.1 — unpublished candidate
+
+Adds independently enabled mobile and sidebar tree navigation with keyboard
+traversal, retained expansion state, a native mobile dialog and asynchronous
+menu loading. Server-rendered links remain available without JavaScript or
+after a failed request. Existing installations retain their current navigation
+unless explicitly enabled. No migration or schema change is included.
+
+PHP, DOM and local Municipio rendering tests pass. Firefox/VoiceOver acceptance,
+visual verification and production rollout remain pending; this candidate does
+not establish support acceptance or change new-site defaults.
+
 ## 1.0.0 — 2026-09-17
 
 First stable release with independent semantic versioning. Preserves the
