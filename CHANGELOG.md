@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0-rc.9 — unpublished candidate
+
+Expand the current page as well as its ancestors on initial tree load so its
+direct children are visible immediately. Subsequent user expansion choices
+remain intact when reopening the mobile panel.
+
 ## 1.1.0-rc.8 — unpublished candidate
 
 Reserve the configured hover palette for pointer hover. Keyboard focus keeps

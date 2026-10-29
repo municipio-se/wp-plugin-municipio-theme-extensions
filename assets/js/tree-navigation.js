@@ -63,8 +63,8 @@
         tree.addEventListener("keydown", (event) => this.keydown(event));
         this.tree = tree;
         const current = this.items.find((item) => item.key === currentKey);
-        for (let parent = current?.parent; parent; parent = parent.parent)
-          this.expand(parent, true);
+        for (let item = current; item; item = item.parent)
+          this.expand(item, true);
         this.remember(current ?? this.items[0]);
 
         // Read focus at commit time: a delayed response must never steal it back.

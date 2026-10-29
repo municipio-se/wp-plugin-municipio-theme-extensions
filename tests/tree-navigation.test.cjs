@@ -119,14 +119,21 @@ test("lazy initialization shares one fetch and keeps independent IDs and expansi
   const ids = [...env.document.querySelectorAll("[id]")].map((node) => node.id);
   assert.equal(new Set(ids).size, ids.length);
   const one = env.document.querySelector("#one [aria-current=page]");
-  one.focus();
-  key(env.dom, "ArrowRight");
   assert.equal(one.getAttribute("aria-expanded"), "true");
+  assert.equal(
+    env.document
+      .querySelector('#one a[href="https://example.test/grandchild"]')
+      .closest("[hidden]"),
+    null,
+  );
+  one.focus();
+  key(env.dom, "ArrowLeft");
+  assert.equal(one.getAttribute("aria-expanded"), "false");
   assert.equal(
     env.document
       .querySelector("#two [aria-current=page]")
       .getAttribute("aria-expanded"),
-    "false",
+    "true",
   );
   assert.equal(
     env.document.querySelectorAll('[role=treeitem][tabindex="0"]').length,
