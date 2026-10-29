@@ -163,3 +163,31 @@ msgstr ""
 #: views/tree/sidebar/partials/navigation/sidebar.blade.php
 msgid "Side navigation"
 msgstr ""
+
+#: source/Customizer/TreeNavigationSettings.php
+msgid "Mobile tree navigation colors"
+msgstr ""
+
+#: source/Customizer/TreeNavigationSettings.php
+msgid "Second level background"
+msgstr ""
+
+#: source/Customizer/TreeNavigationSettings.php
+msgid "Deeper levels background"
+msgstr ""
+
+#: source/Customizer/TreeNavigationSettings.php
+msgid "Hover background"
+msgstr ""
+
+#: source/Customizer/TreeNavigationSettings.php
+msgid "Hover text"
+msgstr ""
+
+#: source/Customizer/TreeNavigationSettings.php
+msgid "Expanded row background"
+msgstr ""
+
+#: source/Customizer/TreeNavigationSettings.php
+msgid "Expanded row text"
+msgstr ""

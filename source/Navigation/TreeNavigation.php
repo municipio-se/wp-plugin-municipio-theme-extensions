@@ -61,7 +61,10 @@ final class TreeNavigation
         $html = '<ul class="c-nav c-nav--vertical unlist mte-tree__list">';
         foreach (array_values($items) as $index => $item) {
             $key = $path . '/' . $index . ':' . (string) ($item['id'] ?? '');
-            $html .= '<li class="c-nav__item"><div class="c-nav__item-wrapper">';
+            $html .=
+                '<li class="c-nav__item" style="--mte-tree-depth:'
+                . substr_count($path, '/')
+                . '"><div class="c-nav__item-wrapper">';
             $href = esc_url((string) ($item['href'] ?? ''));
             $target = (string) ($item['target'] ?? $item['attributeList']['target'] ?? '_top');
             $rel = (string) ($item['rel'] ?? $item['attributeList']['rel'] ?? $item['xfn'] ?? '');

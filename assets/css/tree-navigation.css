@@ -9,7 +9,7 @@
 }
 
 .mte-tree__list .mte-tree__list {
-  padding-inline-start: 1rem;
+  padding-inline-start: 0;
 }
 
 .mte-tree [hidden],
@@ -34,13 +34,75 @@
   text-decoration: underline;
 }
 
-.mte-tree .is-current > .c-nav__item-wrapper {
+.mte-tree .mte-tree__list.c-nav > .c-nav__item > .c-nav__item-wrapper {
+  color: var(--c-nav-v-color-contrasting, inherit);
+}
+
+.mte-tree
+  .mte-tree__list.c-nav
+  > .c-nav__item
+  > .c-nav__item-wrapper
+  > .c-nav__link {
+  /* The indent belongs to the link, not the group, so the whole row is clickable. */
+  padding-inline-start: calc(
+    var(--base, 8px) * (2 + 2 * var(--mte-tree-depth, 0))
+  );
+  color: inherit;
+}
+
+.mte-tree
+  .mte-tree__list.c-nav
+  > .c-nav__item
+  > .c-nav__item-wrapper
+  > .mte-tree__toggle {
+  color: inherit;
+}
+
+.mte-tree .mte-tree__list.c-nav > .is-current > .c-nav__item-wrapper {
   background: var(--c-nav-v-background-active, transparent);
   color: var(--c-nav-v-color-contrasting-active, inherit);
 }
 
-.mte-tree .is-open:not(.is-current) > .c-nav__item-wrapper {
-  background: var(--c-nav-v-background-expanded, transparent);
+.mte-tree
+  .mte-tree__list.c-nav
+  > .is-open:not(.is-current)
+  > .c-nav__item-wrapper {
+  background: var(--mte-tree-open-background, transparent);
+  color: var(--mte-tree-open-text, var(--c-nav-v-color-contrasting, inherit));
+}
+
+.mte-tree .mte-tree__list.c-nav > .c-nav__item > .c-nav__item-wrapper:hover,
+.mte-tree
+  .mte-tree__list.c-nav
+  > .c-nav__item
+  > .c-nav__item-wrapper:focus-within {
+  background: var(
+    --mte-tree-hover-background,
+    var(--c-nav-v-background-active, transparent)
+  );
+  color: var(
+    --mte-tree-hover-text,
+    var(--c-nav-v-color-contrasting-active, inherit)
+  );
+}
+
+.mte-tree > .mte-tree__list.c-nav > .c-nav__item > .mte-tree__list,
+.mte-tree
+  > [data-tree-reserve]
+  > .mte-tree__list.c-nav
+  > .c-nav__item
+  > .mte-tree__list {
+  background: var(
+    --mte-tree-level-2,
+    var(--c-nav-v-background-expanded, transparent)
+  );
+}
+
+.mte-tree .mte-tree__list.c-nav .mte-tree__list .mte-tree__list {
+  background: var(
+    --mte-tree-level-deeper,
+    var(--c-nav-v-background-expanded, transparent)
+  );
 }
 
 .mte-tree.c-nav--bordered .c-nav__item-wrapper {

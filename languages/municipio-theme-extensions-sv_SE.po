@@ -169,3 +169,31 @@ msgstr "Laddar navigation…"
 #: views/tree/sidebar/partials/navigation/sidebar.blade.php
 msgid "Side navigation"
 msgstr "Sidnavigation"
+
+#: source/Customizer/TreeNavigationSettings.php
+msgid "Mobile tree navigation colors"
+msgstr "Färger för trädnavigation i mobilmenyn"
+
+#: source/Customizer/TreeNavigationSettings.php
+msgid "Second level background"
+msgstr "Bakgrund på andra nivån"
+
+#: source/Customizer/TreeNavigationSettings.php
+msgid "Deeper levels background"
+msgstr "Bakgrund på djupare nivåer"
+
+#: source/Customizer/TreeNavigationSettings.php
+msgid "Hover background"
+msgstr "Bakgrund vid hovring"
+
+#: source/Customizer/TreeNavigationSettings.php
+msgid "Hover text"
+msgstr "Text vid hovring"
+
+#: source/Customizer/TreeNavigationSettings.php
+msgid "Expanded row background"
+msgstr "Bakgrund på utfälld rad"
+
+#: source/Customizer/TreeNavigationSettings.php
+msgid "Expanded row text"
+msgstr "Text på utfälld rad"

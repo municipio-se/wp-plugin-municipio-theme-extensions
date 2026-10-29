@@ -107,6 +107,8 @@
         const li = document.createElement("li");
         li.role = "none";
         li.className = "c-nav__item c-nav__item--default";
+        const depth = parent ? parent.depth + 1 : 0;
+        li.style.setProperty("--mte-tree-depth", depth);
         const row = document.createElement("div");
         row.className = "c-nav__item-wrapper";
         const link = document.createElement(node.href ? "a" : "span");
@@ -131,6 +133,7 @@
           li.classList.add("is-current");
         }
         const item = {
+          depth,
           key: node.key,
           label: node.label,
           link,

@@ -53,10 +53,25 @@ final class TreeNavigationSettingsTest extends TestCase
                 return MenuSettings::SECTION_ID;
             }
         });
-        static::assertCount(2, KirkiField::$fields);
-        foreach (KirkiField::$fields as $field) {
+        static::assertCount(3, KirkiField::$fields);
+        foreach (array_slice(KirkiField::$fields, 0, 2) as $field) {
             static::assertFalse($field['default']);
             static::assertSame([['type' => 'controller']], $field['output']);
         }
+    }
+
+    public function testOptionalColorsPreserveDefaultsAndRejectInvalidCss(): void
+    {
+        static::assertSame('', TreeNavigationSettings::colorCss());
+        WordPressState::$themeMods[TreeNavigationSettings::COLORS] = [
+            'level_2' => '#c7d5df',
+            'hover_text' => '#000',
+            'open_text' => 'red;}body{display:none',
+            'unknown' => '#fff',
+        ];
+        static::assertSame(
+            '.mte-tree[data-tree-mobile="true"]{--mte-tree-level-2:#c7d5df;--mte-tree-hover-text:#000}',
+            TreeNavigationSettings::colorCss(),
+        );
     }
 }

@@ -10,6 +10,15 @@ final class TreeNavigationSettings
 {
     public const MOBILE = 'municipio_theme_extensions_mobile_tree_navigation';
     public const SIDEBAR = 'municipio_theme_extensions_sidebar_tree_navigation';
+    public const COLORS = 'municipio_theme_extensions_mobile_tree_colors';
+    private const COLOR_LABELS = [
+        'level_2' => 'Second level background',
+        'level_deeper' => 'Deeper levels background',
+        'hover_background' => 'Hover background',
+        'hover_text' => 'Hover text',
+        'open_background' => 'Expanded row background',
+        'open_text' => 'Expanded row text',
+    ];
 
     public function register(object $section): void
     {
@@ -36,6 +45,33 @@ final class TreeNavigationSettings
                 'output' => [['type' => 'controller']],
             ]);
         }
+        KirkiField::addField([
+            'type' => 'multicolor',
+            'settings' => self::COLORS,
+            'label' => esc_html__('Mobile tree navigation colors', 'municipio-theme-extensions'),
+            'section' => MenuSettings::SECTION_ID,
+            'priority' => 21,
+            'default' => [],
+            'choices' => array_map(static fn($label) => esc_html__(
+                $label,
+                'municipio-theme-extensions',
+            ), self::COLOR_LABELS),
+            'output' => [['type' => 'controller']],
+        ]);
+    }
+
+    public static function colorCss(): string
+    {
+        $values = get_theme_mod(self::COLORS, []);
+        $declarations = [];
+        foreach (self::COLOR_LABELS as $key => $label) {
+            $value = is_array($values) ? $values[$key] ?? null : null;
+            // Empty choices inherit the site's existing navigation palette.
+            if (is_string($value) && preg_match('/^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i', $value) === 1) {
+                $declarations[] = '--mte-tree-' . str_replace('_', '-', $key) . ':' . $value;
+            }
+        }
+        return $declarations === [] ? '' : '.mte-tree[data-tree-mobile="true"]{' . implode(';', $declarations) . '}';
     }
 
     public static function enabled(string $setting): bool

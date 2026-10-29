@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0-rc.7 — unpublished candidate
+
+Move nesting indentation inside each link so hover and click targets span the
+full row. Respect navigation contrast colors on current, expanded and hovered
+rows. Add optional mobile tree colors for nesting levels and interaction
+states, allowing site palettes without customer-specific CSS.
+
 ## 1.1.0-rc.6 — unpublished candidate
 
 Keep sidebar loading status available to screen readers without displaying a

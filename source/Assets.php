@@ -42,6 +42,7 @@ final class Assets
                 $this->version,
                 true,
             );
+            wp_add_inline_style('municipio-theme-extensions-tree', Customizer\TreeNavigationSettings::colorCss());
         }
         wp_enqueue_style(
             self::STYLE_HANDLE,
