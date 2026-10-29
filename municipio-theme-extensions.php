@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * Plugin Name:       Municipio Theme Extensions
  * Description:       Adds focused theme compatibility options to modern Municipio installations.
- * Version:           1.1.0-rc.2
+ * Version:           1.1.0-rc.3
  * Author:            Whitespace
  * Requires PHP:      8.2
  * License:           MIT
@@ -31,7 +31,7 @@ add_action('plugins_loaded', static function (): void {
 });
 
 if (class_exists(Plugin::class)) {
-    (new Plugin(__FILE__, '1.1.0-rc.2'))->register();
+    (new Plugin(__FILE__, '1.1.0-rc.3'))->register();
 }
 
 if (class_exists(ActivationMigration::class)) {

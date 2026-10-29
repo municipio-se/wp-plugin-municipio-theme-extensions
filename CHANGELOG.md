@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0-rc.3 — unpublished candidate
+
+Restore the theme drawer width, link spacing, right-aligned close control with
+its native icon, and configured secondary-menu dividers. Enlarge expansion
+symbols while preserving the tree's keyboard and native dialog behavior.
+
 ## 1.1.0-rc.2 — unpublished candidate
 
 Fix the native mobile dialog remaining off-screen after opening because
