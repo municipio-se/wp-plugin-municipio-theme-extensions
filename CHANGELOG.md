@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.0-rc.6 — unpublished candidate
+
+Keep sidebar loading status available to screen readers without displaying a
+text row that shifts fallback links. The mobile header indicator is unchanged.
+
 ## 1.1.0-rc.5 — unpublished candidate
 
 Use normal block flow inside the mobile panel so expanded tree content cannot

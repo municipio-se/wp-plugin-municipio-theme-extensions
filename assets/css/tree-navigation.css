@@ -97,7 +97,8 @@
   animation: mte-tree-loading 1s linear infinite;
 }
 
-.mte-mobile__content .mte-tree__status {
+/* Loading feedback must not move either menu's usable fallback links. */
+.mte-tree .mte-tree__status {
   position: absolute;
   inline-size: 1px;
   block-size: 1px;
